@@ -220,7 +220,7 @@ public class TreeRewriteVisitor extends FPParserBaseVisitor<FPTreeNode> {
 
     @Override
     public FPTreeNode visitS(FPParserParser.SContext ctx) {
-        return new FPSubstractOneNode();
+        return new FPSubtractOneNode();
     }
 
     @Override
