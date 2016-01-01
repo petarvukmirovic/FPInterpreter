@@ -7,6 +7,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  */
 public class FPBuiltinFunctionNode extends FPFunctionNode {
     @Override
+    // TODO Implement
     public Object evaluate(Atom functionArgument) {
         throw new NotImplementedException();
     }

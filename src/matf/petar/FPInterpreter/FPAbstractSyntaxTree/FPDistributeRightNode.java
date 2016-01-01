@@ -1,7 +1,11 @@
 package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
-/**
- * Created by petar on 1.1.16..
- */
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 public class FPDistributeRightNode extends FPFunctionNode {
+    @Override
+    public Object evaluate(Atom functionArgument) {
+        //TODO Implement.
+        throw new NotImplementedException();
+    }
 }

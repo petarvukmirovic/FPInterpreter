@@ -2,9 +2,6 @@ package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
 import java.util.List;
 
-/**
- * Created by petar on 1.1.16..
- */
 public class FPEqualNode extends FPFunctionNode {
     private static String errorMsg = "eq argument must be two element list.";
 
