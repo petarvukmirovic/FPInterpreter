@@ -1,6 +1,8 @@
 package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
-public class FPIntAtomNode extends FPTreeNode implements Atom {
+import java.util.Map;
+
+public class FPIntAtomNode extends FPExpressionNode implements Atom {
 
     private int _value;
 
@@ -9,7 +11,7 @@ public class FPIntAtomNode extends FPTreeNode implements Atom {
     }
 
     @Override
-    public Object evaluate() {
+    public Integer evaluate() {
         return _value;
     }
 
@@ -22,6 +24,11 @@ public class FPIntAtomNode extends FPTreeNode implements Atom {
         FPIntAtomNode otherAtom = (FPIntAtomNode) other;
 
         return this._value == otherAtom._value;
+    }
+
+    @Override
+    public String toString() {
+        return "" + _value;
     }
 
     FPIntAtomNode performArithmetic(FPIntAtomNode other, char operation) {
@@ -48,5 +55,10 @@ public class FPIntAtomNode extends FPTreeNode implements Atom {
         }
 
         return new FPIntAtomNode(result);
+    }
+
+    @Override
+    public Atom evaluateExpression(Map<String, FPFunctionalFormNode> environment) {
+        return this;
     }
 }

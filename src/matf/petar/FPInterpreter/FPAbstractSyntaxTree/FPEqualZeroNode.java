@@ -1,11 +1,10 @@
 package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
-/**
- * Created by petar on 1.1.16..
- */
-public class FPEqualZeroNode extends FPFunctionNode {
+import java.util.Map;
+
+public class FPEqualZeroNode extends FPBuiltinFunctionNode {
     @Override
-    public Object evaluate(Atom functionArgument) {
+    public Atom evaluate(Atom functionArgument, Map<String, FPFunctionalFormNode> environment) {
         Atom extractedArg =
                 HelperMethods.extractArgument(functionArgument);
 
@@ -13,7 +12,7 @@ public class FPEqualZeroNode extends FPFunctionNode {
                 extractedArg instanceof FPIntAtomNode) {
             FPIntAtomNode intAtom = (FPIntAtomNode) extractedArg;
 
-            return new FPBoolAtomNode((int) intAtom.evaluate() == 0);
+            return new FPBoolAtomNode(intAtom.evaluate() == 0);
         } else {
             String msg = "eq0 arugment must be a singleton int list or " +
                     "int atom";

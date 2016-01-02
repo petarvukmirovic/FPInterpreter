@@ -2,11 +2,12 @@ package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by petar on 1.1.16..
  */
-public class FPBoolAtomNode extends FPTreeNode implements Atom {
+public class FPBoolAtomNode extends FPExpressionNode implements Atom {
     private boolean _value;
 
     public FPBoolAtomNode(boolean value){
@@ -19,8 +20,13 @@ public class FPBoolAtomNode extends FPTreeNode implements Atom {
     }
 
     @Override
-    public Object evaluate() {
+    public Boolean evaluate() {
         return _value;
+    }
+
+    @Override
+    public String toString() {
+        return _value ? "TRUE" : "FALSE";
     }
 
     public boolean equals(Object other) {
@@ -33,4 +39,8 @@ public class FPBoolAtomNode extends FPTreeNode implements Atom {
         return this._value == otherAtom._value;
     }
 
+    @Override
+    public Atom evaluateExpression(Map<String, FPFunctionalFormNode> environment) {
+        return this;
+    }
 }

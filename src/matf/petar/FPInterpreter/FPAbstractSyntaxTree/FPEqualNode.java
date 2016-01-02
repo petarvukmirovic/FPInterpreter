@@ -1,12 +1,13 @@
 package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
 import java.util.List;
+import java.util.Map;
 
-public class FPEqualNode extends FPFunctionNode {
+public class FPEqualNode extends FPBuiltinFunctionNode {
     private static String errorMsg = "eq argument must be two element list.";
 
     @Override
-    public Object evaluate(Atom functionArgument) {
+    public Atom evaluate(Atom functionArgument, Map<String, FPFunctionalFormNode> environment) {
         if (functionArgument instanceof FPListAtomNode) {
             FPListAtomNode listAtom = (FPListAtomNode) functionArgument;
 

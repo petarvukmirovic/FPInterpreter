@@ -24,8 +24,9 @@ public class HelperMethods {
 
             List<Atom> list = listArg.evaluate();
 
-            if (list.size() == 1)
+            if (list.size() == 1) {
                 ret = list.get(0);
+            }
         } else {
             ret = a;
         }

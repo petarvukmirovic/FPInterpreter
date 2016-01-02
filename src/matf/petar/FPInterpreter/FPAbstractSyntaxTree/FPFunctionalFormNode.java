@@ -1,7 +1,7 @@
 package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
-/**
- * Created by petar on 1.1.16..
- */
+import java.util.Map;
+
 public abstract class FPFunctionalFormNode extends FPTreeNode {
+    public abstract Atom applyFunctionalForm(Atom arg, Map<String, FPFunctionalFormNode> environment);
 }

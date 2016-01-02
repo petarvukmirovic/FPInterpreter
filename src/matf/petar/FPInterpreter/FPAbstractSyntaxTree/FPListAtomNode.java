@@ -2,12 +2,13 @@ package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public class FPListAtomNode extends FPTreeNode implements Atom {
+public class FPListAtomNode extends FPExpressionNode implements Atom {
     private ArrayList<Atom> _list;
 
     public FPListAtomNode(){
-        _list = new ArrayList<Atom>();
+        _list = new ArrayList<>();
     }
 
     @Override
@@ -46,6 +47,22 @@ public class FPListAtomNode extends FPTreeNode implements Atom {
         return true;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder("<");
+        if (_list.size() != 0) {
+            builder.append(_list.get(0).toString());
+
+            for (Atom anElement : _list.subList(1, _list.size())) {
+                builder.append(", ");
+                builder.append(anElement);
+            }
+        }
+        builder.append(">");
+
+        return builder.toString();
+    }
+
     FPListAtomNode performArithmetic(FPListAtomNode otherList, char operation){
         FPListAtomNode result = new FPListAtomNode();
 
@@ -71,5 +88,10 @@ public class FPListAtomNode extends FPTreeNode implements Atom {
             String msg = operation + " arguments must be lists of the same size";
             throw new IllegalArgumentException(msg);
         }
+    }
+
+    @Override
+    public Atom evaluateExpression(Map<String, FPFunctionalFormNode> environment) {
+        return this;
     }
 }

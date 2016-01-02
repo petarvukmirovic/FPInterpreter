@@ -8,6 +8,13 @@ import org.antlr.v4.runtime.CommonTokenStream;
 
 import java.io.IOException;
 
+/* DEF fact = (eq0 -> ~1; * . [id, fact . s])
+   factorial definition
+
+   DEF length = INSERT-RIGHT + . APPLY-ALL ~1
+   length definition
+ */
+
 public class GrammarTest {
     public static void main(String[] args) {
         try {
@@ -19,7 +26,7 @@ public class GrammarTest {
             TreeRewriteVisitor treeRewrite = new TreeRewriteVisitor();
             FPProgramNode program = (FPProgramNode)treeRewrite.visitProgram(fpp.program());
 
-            System.out.println(program);
+            program.run();
         } catch (IOException e) {
             e.printStackTrace();
         }

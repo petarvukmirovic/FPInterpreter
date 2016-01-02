@@ -1,8 +1,7 @@
 package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
-/**
- * Created by petar on 1.1.16..
- */
+import java.util.Map;
+
 public abstract class FPExpressionNode extends FPTreeNode {
-    // TODO Implement expression evaluation
+    public abstract Atom evaluateExpression(Map<String, FPFunctionalFormNode> environment);
 }

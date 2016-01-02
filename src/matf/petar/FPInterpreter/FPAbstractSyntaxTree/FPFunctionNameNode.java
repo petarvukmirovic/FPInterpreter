@@ -1,6 +1,6 @@
 package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import java.util.Map;
 
 public class FPFunctionNameNode extends FPFunctionNode {
     private String _funName;
@@ -14,8 +14,15 @@ public class FPFunctionNameNode extends FPFunctionNode {
     }
 
     @Override
-    public Object evaluate(Atom functionArgument) {
-        // TODO Implement.
-        throw new NotImplementedException();
+    public Atom evaluate(Atom functionArgument, Map<String, FPFunctionalFormNode> environment) {
+        FPFunctionalFormNode thisFunction = environment.get(getFunctionName());
+
+        if (thisFunction != null) {
+            return thisFunction.applyFunctionalForm(functionArgument, environment);
+        } else {
+            String errorMsg = getFunctionName() + " is undefined";
+            throw new IllegalArgumentException(errorMsg);
+        }
     }
+
 }

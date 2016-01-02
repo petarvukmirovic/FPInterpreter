@@ -1,11 +1,10 @@
 package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
-/**
- * Created by petar on 1.1.16..
- */
-public class FPIdentityNode extends FPFunctionNode {
+import java.util.Map;
+
+public class FPIdentityNode extends FPBuiltinFunctionNode {
     @Override
-    public Object evaluate(Atom functionArgument) {
+    public Atom evaluate(Atom functionArgument, Map<String, FPFunctionalFormNode> environment) {
         return functionArgument;
     }
 }

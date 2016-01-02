@@ -1,11 +1,13 @@
 package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
+import java.util.Map;
+
 /**
  * Created by petar on 1.1.16..
  */
 public class FPIotaNode extends FPFunctionNode {
     @Override
-    public Object evaluate(Atom functionArgument) {
+    public Atom evaluate(Atom functionArgument, Map<String, FPFunctionalFormNode> environment) {
         Atom extractedArgument =
                 HelperMethods.extractArgument(functionArgument);
         if (extractedArgument != null
@@ -14,7 +16,7 @@ public class FPIotaNode extends FPFunctionNode {
 
             FPListAtomNode newList = new FPListAtomNode();
 
-            for (int i = 1; i < intArg; i++)
+            for (int i = 1; i <= intArg; i++)
                 newList.addChild(new FPIntAtomNode(i));
 
             return newList;

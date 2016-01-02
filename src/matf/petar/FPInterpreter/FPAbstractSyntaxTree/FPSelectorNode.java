@@ -1,11 +1,12 @@
 package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by petar on 1.1.16..
  */
-public class FPSelectorNode extends FPFunctionNode {
+public class FPSelectorNode extends FPBuiltinFunctionNode {
     private int _index;
 
     public FPSelectorNode(int index){
@@ -17,7 +18,7 @@ public class FPSelectorNode extends FPFunctionNode {
     }
 
     @Override
-    public Object evaluate(Atom functionArgument) {
+    public Atom evaluate(Atom functionArgument, Map<String, FPFunctionalFormNode> environment) {
         if (functionArgument instanceof FPListAtomNode) {
             FPListAtomNode listArgument = (FPListAtomNode) functionArgument;
 
