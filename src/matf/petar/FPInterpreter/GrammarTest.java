@@ -23,7 +23,7 @@ public class GrammarTest {
             CommonTokenStream cts = new CommonTokenStream(fppl);
             FPParserParser fpp = new FPParserParser(cts);
 
-            TreeRewriteVisitor treeRewrite = new TreeRewriteVisitor();
+            matf.petar.FPInterpreter.TreeRewriteVisitor treeRewrite = new matf.petar.FPInterpreter.TreeRewriteVisitor();
             FPProgramNode program = (FPProgramNode)treeRewrite.visitProgram(fpp.program());
 
             program.run();

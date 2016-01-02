@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: /usr/local/lib
+Main-Class: matf.petar.FPInterpreter.GrammarTest
+
