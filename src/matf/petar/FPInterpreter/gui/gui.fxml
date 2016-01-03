@@ -1,0 +1,96 @@
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="matf.petar.FPInterpreter.gui.Controller"
+      fx:id="koren">
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
+    <Label>
+        <padding>
+            <Insets bottom="30"/>
+        </padding>
+        <font>
+            <Font size="16" style="bold"/>
+        </font>
+        FP Interpretator
+    </Label>
+
+    <HBox spacing="15" fx:id="kutijaUlaz">
+        <padding>
+            <Insets top="30" right="30" left="30" bottom="30"/>
+        </padding>
+        <fx:define>
+            <ToggleGroup fx:id="ulaz"/>
+        </fx:define>
+        <Label>
+            <padding>
+                <Insets right="20"/>
+            </padding>
+            Ulaz programa:
+        </Label>
+
+        <RadioButton toggleGroup="$ulaz" onAction="#odabranoPolje">Unos iz tekstualnog polja</RadioButton>
+        <RadioButton toggleGroup="$ulaz" onAction="#odabranFajl">Ucitavanje iz datoteke</RadioButton>
+    </HBox>
+
+    <VBox spacing="10" fx:id="zaDatoteku">
+        <padding>
+            <Insets top="80" right="80" left="80" bottom="80"/>
+        </padding>
+        <Label>
+            Ulazna datoteka:
+        </Label>
+        <HBox spacing="10">
+            <TextField fx:id="poljeDatoteka" disable="false"/>
+            <Button fx:id="dugmeOdaberi" onAction="#odaberiDatoteku">Odaberite datoteku</Button>
+        </HBox>
+    </VBox>
+
+    <TextArea fx:id="poljeZaUnos">
+    </TextArea>
+
+    <HBox spacing="15" fx:id="kutijaIzlaz">
+        <padding>
+            <Insets top="30" right="30" left="30" bottom="30"/>
+        </padding>
+        <fx:define>
+            <ToggleGroup fx:id="izlaz"/>
+        </fx:define>
+        <Label>
+            <padding>
+                <Insets right="20"/>
+            </padding>
+            Izlaz programa:
+        </Label>
+
+        <RadioButton toggleGroup="$izlaz" onAction="#odabranoPoljeIzlaz">Izlaz u tekstualno polje</RadioButton>
+        <RadioButton toggleGroup="$izlaz" onAction="#odabranFajlIzlaz">Izlaz u datoteku</RadioButton>
+    </HBox>
+
+    <VBox spacing="10" fx:id="zaIzlaznuDatoteku">
+        <padding>
+            <Insets top="80" right="80" left="80" bottom="80"/>
+        </padding>
+        <Label>
+            Izlazna datoteka:
+        </Label>
+        <HBox spacing="10">
+            <TextField fx:id="poljeIzlaznaDatoteka" disable="true"/>
+            <Button fx:id="dugmeOdaberiIzlaznu" onAction="#odaberiIzlaznuDatoteku">Odaberite datoteku</Button>
+        </HBox>
+    </VBox>
+
+    <TextArea fx:id="poljeZaIzlaz" disable="true">
+    </TextArea>
+
+    <HBox alignment="CENTER">
+        <Button onAction="#pokretanje">
+            Pokrenite prevodjenje
+        </Button>
+    </HBox>
+
+
+</VBox>
