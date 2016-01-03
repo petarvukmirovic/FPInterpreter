@@ -1,5 +1,5 @@
+// Generated from /home/petar/IdeaProjects/FPInterpreter/src/grammar/FPParser.g4 by ANTLR 4.5.1
 package matf.petar.FPInterpreter.gen;
-// Generated from /home/petar/IdeaProjects/FPInterpreter/grammar/FPParser.g4 by ANTLR 4.5.1
 
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.ATN;
@@ -10,98 +10,26 @@ import org.antlr.v4.runtime.dfa.DFA;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class FPParserLexer extends Lexer {
-	static { RuntimeMetaData.checkVersion("4.5.1", RuntimeMetaData.VERSION); }
-
-	protected static final DFA[] _decisionToDFA;
-	protected static final PredictionContextCache _sharedContextCache =
-		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
-		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
-		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, 
+			T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, T__7 = 8, T__8 = 9,
+			T__9 = 10, T__10 = 11, T__11 = 12, T__12 = 13, T__13 = 14, T__14 = 15, T__15 = 16, T__16 = 17,
+			T__17 = 18, T__18 = 19, T__19 = 20, T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24,
+			T__24 = 25, T__25 = 26, T__26 = 27, T__27 = 28, T__28 = 29, T__29 = 30, T__30 = 31,
 		T__31=32, T__32=33, T__33=34, DOT=35, FUN_ID=36, NUM=37, BOOL=38, WS=39;
-	public static String[] modeNames = {
-		"DEFAULT_MODE"
-	};
-
 	public static final String[] ruleNames = {
-		"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "T__8", 
-		"T__9", "T__10", "T__11", "T__12", "T__13", "T__14", "T__15", "T__16", 
-		"T__17", "T__18", "T__19", "T__20", "T__21", "T__22", "T__23", "T__24", 
-		"T__25", "T__26", "T__27", "T__28", "T__29", "T__30", "T__31", "T__32", 
+			"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "T__8",
+			"T__9", "T__10", "T__11", "T__12", "T__13", "T__14", "T__15", "T__16",
+			"T__17", "T__18", "T__19", "T__20", "T__21", "T__22", "T__23", "T__24",
+			"T__25", "T__26", "T__27", "T__28", "T__29", "T__30", "T__31", "T__32",
 		"T__33", "DOT", "FUN_ID", "NUM", "BOOL", "WS"
 	};
-
-	private static final String[] _LITERAL_NAMES = {
-		null, "'DEF'", "'='", "':'", "'APPLY-ALL'", "'INSERT-LEFT'", "'INSERT-RIGHT'", 
-		"'('", "')'", "'['", "','", "']'", "'->'", "';'", "'~'", "'tail'", "'id'", 
-		"'eq'", "'eq0'", "'gt'", "'ge'", "'*'", "'/'", "'+'", "'-'", "'a'", "'s'", 
-		"'apndl'", "'apndr'", "'distl'", "'distr'", "'iota'", "'<>'", "'<'", "'>'", 
-		"'.'"
-	};
-	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, null, null, null, null, null, null, "DOT", 
-		"FUN_ID", "NUM", "BOOL", "WS"
-	};
-	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
-
 	/**
 	 * @deprecated Use {@link #VOCABULARY} instead.
 	 */
 	@Deprecated
 	public static final String[] tokenNames;
-	static {
-		tokenNames = new String[_SYMBOLIC_NAMES.length];
-		for (int i = 0; i < tokenNames.length; i++) {
-			tokenNames[i] = VOCABULARY.getLiteralName(i);
-			if (tokenNames[i] == null) {
-				tokenNames[i] = VOCABULARY.getSymbolicName(i);
-			}
-
-			if (tokenNames[i] == null) {
-				tokenNames[i] = "<INVALID>";
-			}
-		}
-	}
-
-	@Override
-	@Deprecated
-	public String[] getTokenNames() {
-		return tokenNames;
-	}
-
-	@Override
-
-	public Vocabulary getVocabulary() {
-		return VOCABULARY;
-	}
-
-
-	public FPParserLexer(CharStream input) {
-		super(input);
-		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
-	}
-
-	@Override
-	public String getGrammarFileName() { return "FPParser.g4"; }
-
-	@Override
-	public String[] getRuleNames() { return ruleNames; }
-
-	@Override
-	public String getSerializedATN() { return _serializedATN; }
-
-	@Override
-	public String[] getModeNames() { return modeNames; }
-
-	@Override
-	public ATN getATN() { return _ATN; }
-
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\2)\u00f1\b\1\4\2\t"+
+			"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\2)\u00f2\b\1\4\2\t" +
 		"\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
@@ -116,25 +44,25 @@ public class FPParserLexer extends Lexer {
 		"\3\35\3\35\3\35\3\35\3\35\3\35\3\36\3\36\3\36\3\36\3\36\3\36\3\37\3\37"+
 		"\3\37\3\37\3\37\3\37\3 \3 \3 \3 \3 \3!\3!\3!\3\"\3\"\3#\3#\3$\3$\3%\3"+
 		"%\6%\u00d7\n%\r%\16%\u00d8\3&\5&\u00dc\n&\3&\6&\u00df\n&\r&\16&\u00e0"+
-		"\3\'\3\'\3\'\3\'\3\'\3\'\3\'\3\'\3\'\5\'\u00ec\n\'\3(\3(\3(\3(\2\2)\3"+
-		"\3\5\4\7\5\t\6\13\7\r\b\17\t\21\n\23\13\25\f\27\r\31\16\33\17\35\20\37"+
-		"\21!\22#\23%\24\'\25)\26+\27-\30/\31\61\32\63\33\65\34\67\359\36;\37="+
-		" ?!A\"C#E$G%I&K\'M(O)\3\2\6\3\2c|\6\2\62;C\\aac|\4\2))\62;\4\2\13\f\""+
-		"\"\u00f4\2\3\3\2\2\2\2\5\3\2\2\2\2\7\3\2\2\2\2\t\3\2\2\2\2\13\3\2\2\2"+
-		"\2\r\3\2\2\2\2\17\3\2\2\2\2\21\3\2\2\2\2\23\3\2\2\2\2\25\3\2\2\2\2\27"+
-		"\3\2\2\2\2\31\3\2\2\2\2\33\3\2\2\2\2\35\3\2\2\2\2\37\3\2\2\2\2!\3\2\2"+
-		"\2\2#\3\2\2\2\2%\3\2\2\2\2\'\3\2\2\2\2)\3\2\2\2\2+\3\2\2\2\2-\3\2\2\2"+
-		"\2/\3\2\2\2\2\61\3\2\2\2\2\63\3\2\2\2\2\65\3\2\2\2\2\67\3\2\2\2\29\3\2"+
-		"\2\2\2;\3\2\2\2\2=\3\2\2\2\2?\3\2\2\2\2A\3\2\2\2\2C\3\2\2\2\2E\3\2\2\2"+
-		"\2G\3\2\2\2\2I\3\2\2\2\2K\3\2\2\2\2M\3\2\2\2\2O\3\2\2\2\3Q\3\2\2\2\5U"+
-		"\3\2\2\2\7W\3\2\2\2\tY\3\2\2\2\13c\3\2\2\2\ro\3\2\2\2\17|\3\2\2\2\21~"+
-		"\3\2\2\2\23\u0080\3\2\2\2\25\u0082\3\2\2\2\27\u0084\3\2\2\2\31\u0086\3"+
-		"\2\2\2\33\u0089\3\2\2\2\35\u008b\3\2\2\2\37\u008d\3\2\2\2!\u0092\3\2\2"+
-		"\2#\u0095\3\2\2\2%\u0098\3\2\2\2\'\u009c\3\2\2\2)\u009f\3\2\2\2+\u00a2"+
+					"\3\'\3\'\3\'\3\'\3\'\3\'\3\'\3\'\3\'\5\'\u00ec\n\'\3(\5(\u00ef\n(\3(\3" +
+					"(\2\2)\3\3\5\4\7\5\t\6\13\7\r\b\17\t\21\n\23\13\25\f\27\r\31\16\33\17" +
+					"\35\20\37\21!\22#\23%\24\'\25)\26+\27-\30/\31\61\32\63\33\65\34\67\35" +
+					"9\36;\37= ?!A\"C#E$G%I&K\'M(O)\3\2\6\3\2c|\6\2\62;C\\aac|\4\2))\62;\4" +
+					"\3\13\f\"\"\u00f5\2\3\3\2\2\2\2\5\3\2\2\2\2\7\3\2\2\2\2\t\3\2\2\2\2\13" +
+					"\3\2\2\2\2\r\3\2\2\2\2\17\3\2\2\2\2\21\3\2\2\2\2\23\3\2\2\2\2\25\3\2\2" +
+					"\2\2\27\3\2\2\2\2\31\3\2\2\2\2\33\3\2\2\2\2\35\3\2\2\2\2\37\3\2\2\2\2" +
+					"!\3\2\2\2\2#\3\2\2\2\2%\3\2\2\2\2\'\3\2\2\2\2)\3\2\2\2\2+\3\2\2\2\2-\3" +
+					"\2\2\2\2/\3\2\2\2\2\61\3\2\2\2\2\63\3\2\2\2\2\65\3\2\2\2\2\67\3\2\2\2" +
+					"\29\3\2\2\2\2;\3\2\2\2\2=\3\2\2\2\2?\3\2\2\2\2A\3\2\2\2\2C\3\2\2\2\2E" +
+					"\3\2\2\2\2G\3\2\2\2\2I\3\2\2\2\2K\3\2\2\2\2M\3\2\2\2\2O\3\2\2\2\3Q\3\2" +
+					"\2\2\5U\3\2\2\2\7W\3\2\2\2\tY\3\2\2\2\13c\3\2\2\2\ro\3\2\2\2\17|\3\2\2" +
+					"\2\21~\3\2\2\2\23\u0080\3\2\2\2\25\u0082\3\2\2\2\27\u0084\3\2\2\2\31\u0086" +
+					"\3\2\2\2\33\u0089\3\2\2\2\35\u008b\3\2\2\2\37\u008d\3\2\2\2!\u0092\3\2" +
+					"\2\2#\u0095\3\2\2\2%\u0098\3\2\2\2\'\u009c\3\2\2\2)\u009f\3\2\2\2+\u00a2" +
 		"\3\2\2\2-\u00a4\3\2\2\2/\u00a6\3\2\2\2\61\u00a8\3\2\2\2\63\u00aa\3\2\2"+
 		"\2\65\u00ac\3\2\2\2\67\u00ae\3\2\2\29\u00b4\3\2\2\2;\u00ba\3\2\2\2=\u00c0"+
 		"\3\2\2\2?\u00c6\3\2\2\2A\u00cb\3\2\2\2C\u00ce\3\2\2\2E\u00d0\3\2\2\2G"+
-		"\u00d2\3\2\2\2I\u00d4\3\2\2\2K\u00db\3\2\2\2M\u00eb\3\2\2\2O\u00ed\3\2"+
+					"\u00d2\3\2\2\2I\u00d4\3\2\2\2K\u00db\3\2\2\2M\u00eb\3\2\2\2O\u00ee\3\2" +
 		"\2\2QR\7F\2\2RS\7G\2\2ST\7H\2\2T\4\3\2\2\2UV\7?\2\2V\6\3\2\2\2WX\7<\2"+
 		"\2X\b\3\2\2\2YZ\7C\2\2Z[\7R\2\2[\\\7R\2\2\\]\7N\2\2]^\7[\2\2^_\7/\2\2"+
 		"_`\7C\2\2`a\7N\2\2ab\7N\2\2b\n\3\2\2\2cd\7K\2\2de\7P\2\2ef\7U\2\2fg\7"+
@@ -170,15 +98,96 @@ public class FPParserLexer extends Lexer {
 		"\u00de\3\2\2\2\u00e0\u00e1\3\2\2\2\u00e1L\3\2\2\2\u00e2\u00e3\7V\2\2\u00e3"+
 		"\u00e4\7T\2\2\u00e4\u00e5\7W\2\2\u00e5\u00ec\7G\2\2\u00e6\u00e7\7H\2\2"+
 		"\u00e7\u00e8\7C\2\2\u00e8\u00e9\7N\2\2\u00e9\u00ea\7U\2\2\u00ea\u00ec"+
-		"\7G\2\2\u00eb\u00e2\3\2\2\2\u00eb\u00e6\3\2\2\2\u00ecN\3\2\2\2\u00ed\u00ee"+
-		"\t\5\2\2\u00ee\u00ef\3\2\2\2\u00ef\u00f0\b(\2\2\u00f0P\3\2\2\2\7\2\u00d8"+
-		"\u00db\u00e0\u00eb\3\b\2\2";
+					"\7G\2\2\u00eb\u00e2\3\2\2\2\u00eb\u00e6\3\2\2\2\u00ecN\3\2\2\2\u00ed\u00ef" +
+					"\t\5\2\2\u00ee\u00ed\3\2\2\2\u00ef\u00f0\3\2\2\2\u00f0\u00f1\b(\2\2\u00f1" +
+					"P\3\2\2\2\b\2\u00d8\u00db\u00e0\u00eb\u00ee\3\b\2\2";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
+	protected static final DFA[] _decisionToDFA;
+	protected static final PredictionContextCache _sharedContextCache =
+			new PredictionContextCache();
+	private static final String[] _LITERAL_NAMES = {
+			null, "'DEF'", "'='", "':'", "'APPLY-ALL'", "'INSERT-LEFT'", "'INSERT-RIGHT'",
+			"'('", "')'", "'['", "','", "']'", "'->'", "';'", "'~'", "'tail'", "'id'",
+			"'eq'", "'eq0'", "'gt'", "'ge'", "'*'", "'/'", "'+'", "'-'", "'a'", "'s'",
+			"'apndl'", "'apndr'", "'distl'", "'distr'", "'iota'", "'<>'", "'<'", "'>'",
+			"'.'"
+	};
+	private static final String[] _SYMBOLIC_NAMES = {
+			null, null, null, null, null, null, null, null, null, null, null, null,
+			null, null, null, null, null, null, null, null, null, null, null, null,
+			null, null, null, null, null, null, null, null, null, null, null, "DOT",
+			"FUN_ID", "NUM", "BOOL", "WS"
+	};
+	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+	public static String[] modeNames = {
+			"DEFAULT_MODE"
+	};
+
+	static {
+		RuntimeMetaData.checkVersion("4.5.1", RuntimeMetaData.VERSION);
+	}
+
+	static {
+		tokenNames = new String[_SYMBOLIC_NAMES.length];
+		for (int i = 0; i < tokenNames.length; i++) {
+			tokenNames[i] = VOCABULARY.getLiteralName(i);
+			if (tokenNames[i] == null) {
+				tokenNames[i] = VOCABULARY.getSymbolicName(i);
+			}
+
+			if (tokenNames[i] == null) {
+				tokenNames[i] = "<INVALID>";
+			}
+		}
+	}
+
 	static {
 		_decisionToDFA = new DFA[_ATN.getNumberOfDecisions()];
 		for (int i = 0; i < _ATN.getNumberOfDecisions(); i++) {
 			_decisionToDFA[i] = new DFA(_ATN.getDecisionState(i), i);
 		}
+	}
+
+	public FPParserLexer(CharStream input) {
+		super(input);
+		_interp = new LexerATNSimulator(this, _ATN, _decisionToDFA, _sharedContextCache);
+	}
+
+	@Override
+	@Deprecated
+	public String[] getTokenNames() {
+		return tokenNames;
+	}
+
+	@Override
+
+	public Vocabulary getVocabulary() {
+		return VOCABULARY;
+	}
+
+	@Override
+	public String getGrammarFileName() {
+		return "FPParser.g4";
+	}
+
+	@Override
+	public String[] getRuleNames() {
+		return ruleNames;
+	}
+
+	@Override
+	public String getSerializedATN() {
+		return _serializedATN;
+	}
+
+	@Override
+	public String[] getModeNames() {
+		return modeNames;
+	}
+
+	@Override
+	public ATN getATN() {
+		return _ATN;
 	}
 }

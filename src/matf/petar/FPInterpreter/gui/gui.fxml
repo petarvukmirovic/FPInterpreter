@@ -44,12 +44,16 @@
             Ulazna datoteka:
         </Label>
         <HBox spacing="10">
-            <TextField fx:id="poljeDatoteka" disable="false"/>
+            <TextField fx:id="poljeDatoteka" disable="true"/>
             <Button fx:id="dugmeOdaberi" onAction="#odaberiDatoteku">Odaberite datoteku</Button>
         </HBox>
     </VBox>
 
     <TextArea fx:id="poljeZaUnos">
+        <font>
+            <Font name="monospace" size="12"/>
+        </font>
+
     </TextArea>
 
     <HBox spacing="15" fx:id="kutijaIzlaz">
@@ -83,10 +87,13 @@
         </HBox>
     </VBox>
 
-    <TextArea fx:id="poljeZaIzlaz" disable="true">
+    <TextArea fx:id="poljeZaIzlaz" editable="false">
     </TextArea>
 
     <HBox alignment="CENTER">
+        <padding>
+            <Insets top="20"/>
+        </padding>
         <Button onAction="#pokretanje">
             Pokrenite prevodjenje
         </Button>

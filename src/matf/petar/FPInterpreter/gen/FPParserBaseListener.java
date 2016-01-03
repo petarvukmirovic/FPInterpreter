@@ -1,5 +1,5 @@
+// Generated from /home/petar/IdeaProjects/FPInterpreter/src/grammar/FPParser.g4 by ANTLR 4.5.1
 package matf.petar.FPInterpreter.gen;
-// Generated from /home/petar/IdeaProjects/FPInterpreter/grammar/FPParser.g4 by ANTLR 4.5.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;

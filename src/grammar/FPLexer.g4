@@ -6,5 +6,5 @@ NUM: ('-')?['0-9]+;
 BOOL: 'TRUE' | 'FALSE';
 
 /* ignore whitespace */
-WS: [ \n\t] -> skip;
+WS: ([ \n\t] | EOF) -> skip;
 

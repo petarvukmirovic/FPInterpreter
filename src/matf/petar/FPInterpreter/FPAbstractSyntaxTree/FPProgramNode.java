@@ -7,7 +7,8 @@ public class FPProgramNode extends FPTreeNode {
     private Map<String, FPFunctionalFormNode> _programEnvironment
             = new HashMap<>();
 
-    public void run() {
+    public String run() {
+        StringBuilder builder = new StringBuilder();
         try {
             for (FPTreeNode command : this.getChildren()) {
                 if (command instanceof FPFunctionDefinitionNode) {
@@ -17,11 +18,14 @@ public class FPProgramNode extends FPTreeNode {
                 } else {
                     // command is expression evaluation
                     FPExpressionNode expression = (FPExpressionNode) command;
-                    System.out.println(expression.evaluateExpression(_programEnvironment));
+                    builder.append(expression.evaluateExpression(_programEnvironment)
+                            + "\n");
                 }
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            builder.append(e.getMessage() + "\n");
+        } finally {
+            return builder.toString();
         }
     }
 }
