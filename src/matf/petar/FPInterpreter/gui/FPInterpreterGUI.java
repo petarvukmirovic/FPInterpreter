@@ -19,7 +19,7 @@ public class FPInterpreterGUI extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("gui.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("FP Interpretator");
         primaryStage.setScene(new Scene(root, 640, 800));
         primaryStage.show();
     }

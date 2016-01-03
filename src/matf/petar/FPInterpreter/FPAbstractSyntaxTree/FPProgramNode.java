@@ -28,4 +28,14 @@ public class FPProgramNode extends FPTreeNode {
             return builder.toString();
         }
     }
+
+    public Map<String, FPFunctionalFormNode> getProgramEnvironment() {
+        return new HashMap<>(_programEnvironment);
+    }
+
+    public void setProgramEnvironment(Map<String, FPFunctionalFormNode> value) {
+        this._programEnvironment = new HashMap<>(value);
+    }
+
+
 }
