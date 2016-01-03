@@ -25,9 +25,9 @@ public class REPLInterpreter {
 
             Map<String, FPFunctionalFormNode> environment =
                     new HashMap<>();
+            System.out.print("> ");
+            System.out.flush();
             while (scanner.hasNextLine()) {
-                System.out.print("> ");
-                System.out.flush();
 
                 String line = scanner.nextLine();
                 ANTLRInputStream ais = new ANTLRInputStream(line);
@@ -42,10 +42,13 @@ public class REPLInterpreter {
                 String result = program.run();
 
                 if (!"".equals(result.trim())) {
-                    System.out.println(result);
+                    System.out.print(result);
                 } else if (fpp.getNumberOfSyntaxErrors() == 0) {
                     System.out.println("OK");
                 }
+
+                System.out.print("> ");
+                System.out.flush();
 
                 environment = program.getProgramEnvironment();
             }
