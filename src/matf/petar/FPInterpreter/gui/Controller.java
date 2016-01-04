@@ -8,16 +8,24 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import matf.petar.FPInterpreter.FPAbstractSyntaxTree.FPProgramNode;
+import matf.petar.FPInterpreter.TreeRewriteVisitor;
+import matf.petar.FPInterpreter.gen.FPParserLexer;
+import matf.petar.FPInterpreter.gen.FPParserParser;
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.atn.ATNConfigSet;
+import org.antlr.v4.runtime.dfa.DFA;
 
-import java.io.File;
+import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.ResourceBundle;
 
-/**
- * Created by petar on 3.1.16..
- */
-
 public class Controller implements Initializable {
+
 
     public TextField poljeDatoteka;
     public Button dugmeOdaberi;
@@ -31,8 +39,8 @@ public class Controller implements Initializable {
     public TextField poljeIzlaznaDatoteka;
     public Button dugmeOdaberiIzlaznu;
     public TextArea poljeZaIzlaz;
-    Tokovi aktivanUlaz;
-    Tokovi aktivanIzlaz;
+    private Tokovi aktivanUlaz;
+    private Tokovi aktivanIzlaz;
     private File odabranaDatoteka;
     private File odabranaIzlaznaDatoteka;
 
@@ -40,6 +48,20 @@ public class Controller implements Initializable {
         FileChooser birac = new FileChooser();
         birac.setTitle("Odaberite datoteku za ulaz programa");
         odabranaDatoteka = birac.showOpenDialog(null);
+
+        if (odabranaDatoteka != null) {
+            poljeDatoteka.setText(odabranaDatoteka.getAbsolutePath());
+        }
+    }
+
+    public void odaberiIzlaznuDatoteku(ActionEvent actionEvent) {
+        FileChooser birac = new FileChooser();
+        birac.setTitle("Odaberite datoteku za izlaz programa");
+        odabranaIzlaznaDatoteka = birac.showOpenDialog(null);
+
+        if (odabranaIzlaznaDatoteka != null) {
+            poljeIzlaznaDatoteka.setText(odabranaIzlaznaDatoteka.getAbsolutePath());
+        }
     }
 
     @Override
@@ -49,7 +71,7 @@ public class Controller implements Initializable {
     }
 
     public void odabranoPoljeIzlaz(ActionEvent actionEvent) {
-        aktivanIzlaz = Tokovi.IZ_TEKST_POLJA;
+        aktivanIzlaz = Tokovi.TEKST_POLJE;
         sakrijOpcijeZaIzlaz();
 
         int indeksKutijeZaIzlaz = koren.getChildren().indexOf(kutijaIzlaz);
@@ -58,7 +80,7 @@ public class Controller implements Initializable {
     }
 
     public void odabranFajlIzlaz(ActionEvent actionEvent) {
-        aktivanIzlaz = Tokovi.IZ_DATOTEKE;
+        aktivanIzlaz = Tokovi.DATOTEKA;
         sakrijOpcijeZaIzlaz();
 
         int indeksKutijeZaIzlaz = koren.getChildren().indexOf(kutijaIzlaz);
@@ -66,17 +88,8 @@ public class Controller implements Initializable {
         koren.getChildren().add(indeksKutijeZaIzlaz + 1, zaIzlaznuDatoteku);
     }
 
-    public void odaberiIzlaznuDatoteku(ActionEvent actionEvent) {
-        FileChooser birac = new FileChooser();
-        birac.setTitle("Odaberite datoteku za izlaz programa");
-        odabranaIzlaznaDatoteka = birac.showOpenDialog(null);
-    }
-
-    public void pokretanje(ActionEvent actionEvent) {
-    }
-
     public void odabranoPolje(ActionEvent actionEvent) {
-        aktivanUlaz = Tokovi.IZ_TEKST_POLJA;
+        aktivanUlaz = Tokovi.TEKST_POLJE;
         sakrijOpcijeZaUlaz();
 
         int indeksKutijeZaUlaz = koren.getChildren().indexOf(kutijaUlaz);
@@ -85,7 +98,7 @@ public class Controller implements Initializable {
     }
 
     public void odabranFajl(ActionEvent actionEvent) {
-        aktivanUlaz = Tokovi.IZ_TEKST_POLJA;
+        aktivanUlaz = Tokovi.DATOTEKA;
         sakrijOpcijeZaUlaz();
 
         int indeksKutijeZaUlaz = koren.getChildren().indexOf(kutijaUlaz);
@@ -111,7 +124,106 @@ public class Controller implements Initializable {
         }
     }
 
+    public void pokretanje(ActionEvent actionEvent) {
+        if (aktivanUlaz == null || aktivanIzlaz == null) {
+            ErrorMessages.Greska("Morate odabrati tip ulaza i izlaza.");
+        } else {
+            ANTLRInputStream ais;
+            if (aktivanUlaz == Tokovi.TEKST_POLJE) {
+                ais = new ANTLRInputStream(poljeZaUnos.getText());
+            } else {
+                if (odabranaDatoteka == null) {
+                    ErrorMessages.Greska("Morate odabrati ulaznu datoteku.");
+                    return;
+                }
+                try {
+                    BufferedReader br = new BufferedReader(
+                            new InputStreamReader(
+                                    new FileInputStream(odabranaDatoteka)));
+                    ais = new ANTLRInputStream(br);
+                } catch (IOException ioe) {
+                    ErrorMessages.Greska("Ulazna datoteka se ne moze otvoriti : " +
+                            ioe.getMessage());
+                    return;
+                }
+            }
+
+            FPParserLexer fppl = new FPParserLexer(ais);
+            CommonTokenStream cts = new CommonTokenStream(fppl);
+            FPParserParser fpp = new FPParserParser(cts);
+
+            ArrayList<SyntaxErrorReport> sveGreske =
+                    new ArrayList<>();
+
+            fpp.addErrorListener(new ANTLRErrorListener() {
+                @Override
+                public void syntaxError(Recognizer<?, ?> recognizer, Object o,
+                                        int i, int i1, String s, RecognitionException e) {
+                    sveGreske.add(new SyntaxErrorReport(i, i1, s));
+                }
+
+                @Override
+                public void reportAmbiguity(Parser parser, DFA dfa, int i,
+                                            int i1, boolean b, BitSet bitSet, ATNConfigSet atnConfigSet) {
+                    ErrorMessages.Greska("Doslo je do greske pri parsiranju.");
+                }
+
+                @Override
+                public void reportAttemptingFullContext(Parser parser, DFA dfa, int i, int i1,
+                                                        BitSet bitSet, ATNConfigSet atnConfigSet) {
+                    ErrorMessages.Greska("Doslo je do greske pri parsiranju.");
+                }
+
+                @Override
+                public void reportContextSensitivity(Parser parser, DFA dfa, int i, int i1,
+                                                     int i2, ATNConfigSet atnConfigSet) {
+                    ErrorMessages.Greska("Doslo je do greske pri parsiranju.");
+                }
+            });
+
+            TreeRewriteVisitor trv = new TreeRewriteVisitor();
+
+            FPProgramNode program = (FPProgramNode) trv.visitProgram(fpp.program());
+
+            String rezultat;
+            if (program != null) {
+                rezultat = program.run();
+            } else {
+                rezultat = "";
+            }
+
+            if (sveGreske.size() != 0) {
+                String izvestaj =
+                        ErrorMessages.generisiIzvestaj(sveGreske, poljeZaUnos.getText());
+                ErrorMessages.Greska("Doslo je do sintaksne greske.");
+
+                sakrijOpcijeZaUlaz();
+                int indeksKutijeZaUlaz = koren.getChildren().indexOf(kutijaUlaz);
+                koren.getChildren().add(indeksKutijeZaUlaz + 1, poljeZaUnos);
+
+                poljeZaUnos.setText(izvestaj);
+            } else {
+                if (aktivanIzlaz == Tokovi.TEKST_POLJE) {
+                    poljeZaIzlaz.setText(rezultat);
+                } else {
+                    if (odabranaIzlaznaDatoteka != null) {
+                        try {
+                            Files.write(Paths.get(odabranaIzlaznaDatoteka.getAbsolutePath()),
+                                    rezultat.getBytes());
+                        } catch (IOException ioe) {
+                            ErrorMessages.Greska("Izlazna datoteka se ne moze otvoriti : " +
+                                    ioe.getMessage());
+                            return;
+                        }
+                    } else {
+                        ErrorMessages.Greska("Mora se odabrati izlazna datoteka.");
+                        return;
+                    }
+                }
+            }
+        }
+    }
     public enum Tokovi {
-        IZ_DATOTEKE, IZ_TEKST_POLJA
+        DATOTEKA, TEKST_POLJE
     }
 }

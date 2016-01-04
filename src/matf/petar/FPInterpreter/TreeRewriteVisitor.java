@@ -10,19 +10,24 @@ public class TreeRewriteVisitor extends FPParserBaseVisitor<FPTreeNode> {
 
     @Override
     public FPTreeNode visitProgram(FPParserParser.ProgramContext ctx) {
-        FPProgramNode program = new FPProgramNode();
+        try {
+            FPProgramNode program = new FPProgramNode();
 
-        int childCount = ctx.getChildCount();
-        for(int i=0; i < childCount; i++){
-            ParseTree programCtxChild = ctx.getChild(i);
+            int childCount = ctx.getChildCount();
+            for (int i = 0; i < childCount; i++) {
+                ParseTree programCtxChild = ctx.getChild(i);
 
-            if (!",".equals(programCtxChild.getText())){
-                FPTreeNode aProgramChild = visit(programCtxChild);
-                program.addChild(aProgramChild);
+                if (!",".equals(programCtxChild.getText())) {
+                    FPTreeNode aProgramChild = visit(programCtxChild);
+                    program.addChild(aProgramChild);
+                }
             }
+            return program;
+        } catch (Exception e) {
+            // if there is  error in the visiting
+            // of children, then return null
+            return null;
         }
-
-        return program;
     }
 
     @Override

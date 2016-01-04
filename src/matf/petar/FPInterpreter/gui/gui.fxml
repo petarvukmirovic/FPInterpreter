@@ -49,11 +49,7 @@
         </HBox>
     </VBox>
 
-    <TextArea fx:id="poljeZaUnos">
-        <font>
-            <Font name="monospace" size="12"/>
-        </font>
-
+    <TextArea fx:id="poljeZaUnos" style="-fx-font-family: monospace; -fx-font-size:14px">
     </TextArea>
 
     <HBox spacing="15" fx:id="kutijaIzlaz">
@@ -87,7 +83,8 @@
         </HBox>
     </VBox>
 
-    <TextArea fx:id="poljeZaIzlaz" editable="false">
+    <TextArea fx:id="poljeZaIzlaz" editable="false"
+              style="-fx-font-family: monospace; -fx-font-size:14px">
     </TextArea>
 
     <HBox alignment="CENTER">
