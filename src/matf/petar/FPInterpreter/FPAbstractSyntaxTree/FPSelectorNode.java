@@ -3,9 +3,6 @@ package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by petar on 1.1.16..
- */
 public class FPSelectorNode extends FPBuiltinFunctionNode {
     private int _index;
 
@@ -23,9 +20,9 @@ public class FPSelectorNode extends FPBuiltinFunctionNode {
             FPListAtomNode listArgument = (FPListAtomNode) functionArgument;
 
             List<Atom> list = listArgument.evaluate();
-
             try {
-                return list.get(getIndex());
+                // Indices start from 1
+                return list.get(getIndex() - 1);
             } catch (IndexOutOfBoundsException ioobe) {
                 String msg = "selector index not in list bounds.";
                 throw new IllegalArgumentException(msg);
