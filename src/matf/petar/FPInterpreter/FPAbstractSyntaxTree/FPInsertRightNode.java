@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class FPInsertRightNode extends FPFunctionalFormNode {
     private static final String errorMsg =
-            "when applied to an expression INSERT-LEFT "
+            "when applied to an expression INSERT-RIGHT "
                     + "functional form expects a list atom";
 
     @Override

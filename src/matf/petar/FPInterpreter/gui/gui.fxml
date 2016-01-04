@@ -32,7 +32,8 @@
             Ulaz programa:
         </Label>
 
-        <RadioButton toggleGroup="$ulaz" onAction="#odabranoPolje">Unos iz tekstualnog polja</RadioButton>
+        <RadioButton fx:id="dugmeUnos" toggleGroup="$ulaz" onAction="#odabranoPolje">Unos iz tekstualnog polja
+        </RadioButton>
         <RadioButton toggleGroup="$ulaz" onAction="#odabranFajl">Ucitavanje iz datoteke</RadioButton>
     </HBox>
 

@@ -3,6 +3,7 @@ package matf.petar.FPInterpreter.gui;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -39,6 +40,7 @@ public class Controller implements Initializable {
     public TextField poljeIzlaznaDatoteka;
     public Button dugmeOdaberiIzlaznu;
     public TextArea poljeZaIzlaz;
+    public RadioButton dugmeUnos;
     private Tokovi aktivanUlaz;
     private Tokovi aktivanIzlaz;
     private File odabranaDatoteka;
@@ -193,14 +195,27 @@ public class Controller implements Initializable {
             }
 
             if (sveGreske.size() != 0) {
+                String tekstPrograma;
+                if (aktivanUlaz == Tokovi.TEKST_POLJE) {
+                    tekstPrograma = poljeZaUnos.getText();
+                } else {
+                    try {
+                        tekstPrograma =
+                                new String(Files.readAllBytes
+                                        (Paths.get(odabranaDatoteka.getAbsolutePath())));
+                    } catch (IOException e) {
+                        tekstPrograma = "";
+                        e.printStackTrace();
+                    }
+                }
+
+
                 String izvestaj =
-                        ErrorMessages.generisiIzvestaj(sveGreske, poljeZaUnos.getText());
+                        ErrorMessages.generisiIzvestaj(sveGreske, tekstPrograma);
                 ErrorMessages.Greska("Doslo je do sintaksne greske.");
 
-                sakrijOpcijeZaUlaz();
-                int indeksKutijeZaUlaz = koren.getChildren().indexOf(kutijaUlaz);
-                koren.getChildren().add(indeksKutijeZaUlaz + 1, poljeZaUnos);
-
+                dugmeUnos.setSelected(true);
+                odabranoPolje(null);
                 poljeZaUnos.setText(izvestaj);
             } else {
                 if (aktivanIzlaz == Tokovi.TEKST_POLJE) {
