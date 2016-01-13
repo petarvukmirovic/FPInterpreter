@@ -136,6 +136,24 @@ public class FPParserBaseListener implements FPParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override
+	public void enterWhile(FPParserParser.WhileContext ctx) {
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override
+	public void exitWhile(FPParserParser.WhileContext ctx) {
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterInsertRight(FPParserParser.InsertRightContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -154,7 +172,26 @@ public class FPParserBaseListener implements FPParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParenths(FPParserParser.ParenthsContext ctx) { }
+	@Override
+	public void exitParenths(FPParserParser.ParenthsContext ctx) {
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override
+	public void enterBinaryToUnary(FPParserParser.BinaryToUnaryContext ctx) {
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override
+	public void exitBinaryToUnary(FPParserParser.BinaryToUnaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

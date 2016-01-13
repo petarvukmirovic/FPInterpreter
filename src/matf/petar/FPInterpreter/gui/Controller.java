@@ -49,6 +49,9 @@ public class Controller implements Initializable {
     public void odaberiDatoteku(ActionEvent actionEvent) {
         FileChooser birac = new FileChooser();
         birac.setTitle("Odaberite datoteku za ulaz programa");
+        if (odabranaDatoteka != null) {
+            birac.setInitialDirectory(odabranaDatoteka.getParentFile());
+        }
         odabranaDatoteka = birac.showOpenDialog(null);
 
         if (odabranaDatoteka != null) {
@@ -58,8 +61,11 @@ public class Controller implements Initializable {
 
     public void odaberiIzlaznuDatoteku(ActionEvent actionEvent) {
         FileChooser birac = new FileChooser();
+        if (odabranaIzlaznaDatoteka != null) {
+            birac.setInitialDirectory(odabranaIzlaznaDatoteka.getParentFile());
+        }
         birac.setTitle("Odaberite datoteku za izlaz programa");
-        odabranaIzlaznaDatoteka = birac.showOpenDialog(null);
+        odabranaIzlaznaDatoteka = birac.showSaveDialog(null);
 
         if (odabranaIzlaznaDatoteka != null) {
             poljeIzlaznaDatoteka.setText(odabranaIzlaznaDatoteka.getAbsolutePath());
@@ -167,19 +173,19 @@ public class Controller implements Initializable {
                 @Override
                 public void reportAmbiguity(Parser parser, DFA dfa, int i,
                                             int i1, boolean b, BitSet bitSet, ATNConfigSet atnConfigSet) {
-                    ErrorMessages.Greska("Doslo je do greske pri parsiranju.");
+                    ErrorMessages.Greska("Dvosmislena gramatika!");
                 }
 
                 @Override
                 public void reportAttemptingFullContext(Parser parser, DFA dfa, int i, int i1,
                                                         BitSet bitSet, ATNConfigSet atnConfigSet) {
-                    ErrorMessages.Greska("Doslo je do greske pri parsiranju.");
+                    // upozorenje
                 }
 
                 @Override
                 public void reportContextSensitivity(Parser parser, DFA dfa, int i, int i1,
                                                      int i2, ATNConfigSet atnConfigSet) {
-                    ErrorMessages.Greska("Doslo je do greske pri parsiranju.");
+                    // upozorenje
                 }
             });
 
@@ -195,49 +201,55 @@ public class Controller implements Initializable {
             }
 
             if (sveGreske.size() != 0) {
-                String tekstPrograma;
-                if (aktivanUlaz == Tokovi.TEKST_POLJE) {
-                    tekstPrograma = poljeZaUnos.getText();
-                } else {
-                    try {
-                        tekstPrograma =
-                                new String(Files.readAllBytes
-                                        (Paths.get(odabranaDatoteka.getAbsolutePath())));
-                    } catch (IOException e) {
-                        tekstPrograma = "";
-                        e.printStackTrace();
-                    }
-                }
-
-
                 String izvestaj =
-                        ErrorMessages.generisiIzvestaj(sveGreske, tekstPrograma);
+                        ErrorMessages.generisiIzvestaj(sveGreske, _uzmiTekstPrograma());
                 ErrorMessages.Greska("Doslo je do sintaksne greske.");
 
                 dugmeUnos.setSelected(true);
                 odabranoPolje(null);
                 poljeZaUnos.setText(izvestaj);
             } else {
-                if (aktivanIzlaz == Tokovi.TEKST_POLJE) {
-                    poljeZaIzlaz.setText(rezultat);
-                } else {
-                    if (odabranaIzlaznaDatoteka != null) {
-                        try {
-                            Files.write(Paths.get(odabranaIzlaznaDatoteka.getAbsolutePath()),
-                                    rezultat.getBytes());
-                        } catch (IOException ioe) {
-                            ErrorMessages.Greska("Izlazna datoteka se ne moze otvoriti : " +
-                                    ioe.getMessage());
-                            return;
-                        }
-                    } else {
-                        ErrorMessages.Greska("Mora se odabrati izlazna datoteka.");
+                if (aktivanIzlaz == Tokovi.DATOTEKA &&
+                        odabranaIzlaznaDatoteka != null) {
+                    try {
+                        Files.write(Paths.get(odabranaIzlaznaDatoteka.getAbsolutePath()),
+                                rezultat.getBytes());
+                    } catch (IOException ioe) {
+                        ErrorMessages.Greska("Izlazna datoteka se ne moze otvoriti : " +
+                                ioe.getMessage());
                         return;
                     }
+                } else if (aktivanIzlaz == Tokovi.TEKST_POLJE) {
+                    poljeZaIzlaz.setText(rezultat);
+                } else {
+                    ErrorMessages.Greska("Mora se odabrati izlazna datoteka.");
+                    return;
                 }
+
+                poljeZaUnos.setText(_uzmiTekstPrograma());
+                dugmeUnos.setSelected(true);
+                odabranoPolje(null);
             }
         }
     }
+
+    private String _uzmiTekstPrograma() {
+        String tekstPrograma;
+        if (aktivanUlaz == Tokovi.TEKST_POLJE) {
+            tekstPrograma = poljeZaUnos.getText();
+        } else {
+            try {
+                tekstPrograma =
+                        new String(Files.readAllBytes
+                                (Paths.get(odabranaDatoteka.getAbsolutePath())));
+            } catch (IOException e) {
+                tekstPrograma = "";
+                e.printStackTrace();
+            }
+        }
+        return tekstPrograma;
+    }
+
     public enum Tokovi {
         DATOTEKA, TEKST_POLJE
     }

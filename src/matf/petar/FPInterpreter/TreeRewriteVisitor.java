@@ -31,6 +31,26 @@ public class TreeRewriteVisitor extends FPParserBaseVisitor<FPTreeNode> {
     }
 
     @Override
+    public FPTreeNode visitWhile(FPParserParser.WhileContext ctx) {
+        FPWhileNode whileNode = new FPWhileNode();
+
+        whileNode.addChild(visit(ctx.functional_form(0)));
+        whileNode.addChild(visit(ctx.functional_form(1)));
+
+        return whileNode;
+    }
+
+    @Override
+    public FPTreeNode visitBinaryToUnary(FPParserParser.BinaryToUnaryContext ctx) {
+        FPBinaryToUnaryNode buNode = new FPBinaryToUnaryNode();
+
+        buNode.addChild(visit(ctx.function()));
+        buNode.addChild(visit(ctx.atom()));
+
+        return buNode;
+    }
+
+    @Override
     public FPTreeNode visitDefinition(FPParserParser.DefinitionContext ctx) {
         String functionName = ctx.FUN_ID().getText();
 

@@ -122,6 +122,21 @@ public interface FPParserListener extends ParseTreeListener {
 	 */
 	void exitElementary(FPParserParser.ElementaryContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code while}
+	 * labeled alternative in {@link FPParserParser#functional_form}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhile(FPParserParser.WhileContext ctx);
+
+	/**
+	 * Exit a parse tree produced by the {@code while}
+	 * labeled alternative in {@link FPParserParser#functional_form}.
+	 *
+	 * @param ctx the parse tree
+	 */
+	void exitWhile(FPParserParser.WhileContext ctx);
+
+	/**
 	 * Enter a parse tree produced by the {@code insertRight}
 	 * labeled alternative in {@link FPParserParser#functional_form}.
 	 * @param ctx the parse tree
@@ -145,6 +160,22 @@ public interface FPParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitParenths(FPParserParser.ParenthsContext ctx);
+
+	/**
+	 * Enter a parse tree produced by the {@code binaryToUnary}
+	 * labeled alternative in {@link FPParserParser#functional_form}.
+	 *
+	 * @param ctx the parse tree
+	 */
+	void enterBinaryToUnary(FPParserParser.BinaryToUnaryContext ctx);
+
+	/**
+	 * Exit a parse tree produced by the {@code binaryToUnary}
+	 * labeled alternative in {@link FPParserParser#functional_form}.
+	 *
+	 * @param ctx the parse tree
+	 */
+	void exitBinaryToUnary(FPParserParser.BinaryToUnaryContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link FPParserParser#construction}.
 	 * @param ctx the parse tree

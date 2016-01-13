@@ -14,6 +14,8 @@ expression: functional_form ':' expression
 functional_form : 'APPLY-ALL' functional_form         #applyAll
                  | 'INSERT-LEFT' functional_form      #insertLeft
                  | 'INSERT-RIGHT' functional_form     #insertRight
+                 | 'BU' function atom                 #binaryToUnary
+                 | 'WHILE' functional_form functional_form #while
                  | construction                       #constructionLabel
                  | conditional                        #conditionalLabel
                  | constant                           #constantLabel

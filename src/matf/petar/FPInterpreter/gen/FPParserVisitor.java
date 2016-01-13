@@ -78,6 +78,14 @@ public interface FPParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitElementary(FPParserParser.ElementaryContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code while}
+	 * labeled alternative in {@link FPParserParser#functional_form}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhile(FPParserParser.WhileContext ctx);
+
+	/**
 	 * Visit a parse tree produced by the {@code insertRight}
 	 * labeled alternative in {@link FPParserParser#functional_form}.
 	 * @param ctx the parse tree
@@ -91,6 +99,15 @@ public interface FPParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitParenths(FPParserParser.ParenthsContext ctx);
+
+	/**
+	 * Visit a parse tree produced by the {@code binaryToUnary}
+	 * labeled alternative in {@link FPParserParser#functional_form}.
+	 *
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBinaryToUnary(FPParserParser.BinaryToUnaryContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link FPParserParser#construction}.
 	 * @param ctx the parse tree
