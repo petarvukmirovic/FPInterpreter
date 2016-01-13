@@ -1,6 +1,7 @@
-DOT=1
-FUN_ID=2
-NUM=3
-BOOL=4
-WS=5
-'.'=1
+COMMENT=1
+DOT=2
+FUN_ID=3
+NUM=4
+BOOL=5
+WS=6
+'.'=2

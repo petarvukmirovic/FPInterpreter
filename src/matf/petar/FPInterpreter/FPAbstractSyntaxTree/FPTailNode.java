@@ -12,8 +12,12 @@ public class FPTailNode extends FPBuiltinFunctionNode {
 
             FPListAtomNode listTail = new FPListAtomNode();
 
-            for (Atom a : atomList.subList(1, atomList.size())) {
-                listTail.addChild((FPTreeNode) a);
+            if (atomList.size() != 0) {
+                for (Atom a : atomList.subList(1, atomList.size())) {
+                    listTail.addChild((FPTreeNode) a);
+                }
+            } else {
+                throw new IllegalArgumentException("tail arugment must be non-empty list");
             }
 
             return listTail;

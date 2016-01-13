@@ -20,7 +20,8 @@ public class FPParserParser extends Parser {
 			T__9 = 10, T__10 = 11, T__11 = 12, T__12 = 13, T__13 = 14, T__14 = 15, T__15 = 16, T__16 = 17,
 			T__17 = 18, T__18 = 19, T__19 = 20, T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24,
 			T__24 = 25, T__25 = 26, T__26 = 27, T__27 = 28, T__28 = 29, T__29 = 30, T__30 = 31,
-		T__31=32, T__32=33, T__33=34, DOT=35, FUN_ID=36, NUM=37, BOOL=38, WS=39;
+			T__31 = 32, T__32 = 33, T__33 = 34, COMMENT = 35, DOT = 36, FUN_ID = 37, NUM = 38, BOOL = 39,
+			WS = 40;
 	public static final int
 			RULE_program = 0, RULE_definition = 1, RULE_expression = 2, RULE_functional_form = 3,
 			RULE_construction = 4, RULE_conditional = 5, RULE_constant = 6, RULE_function = 7,
@@ -35,7 +36,7 @@ public class FPParserParser extends Parser {
 	@Deprecated
 	public static final String[] tokenNames;
 	public static final String _serializedATN =
-			"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3)\u0082\4\2\t\2\4" +
+			"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3*\u0082\4\2\t\2\4" +
 					"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t" +
 					"\13\4\f\t\f\3\2\3\2\6\2\33\n\2\r\2\16\2\34\3\3\3\3\3\3\3\3\3\3\3\4\3\4" +
 					"\3\4\3\4\3\4\5\4)\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5" +
@@ -48,23 +49,23 @@ public class FPParserParser extends Parser {
 					"\2\2\2\b9\3\2\2\2\nC\3\2\2\2\fN\3\2\2\2\16V\3\2\2\2\20[\3\2\2\2\22l\3" +
 					"\2\2\2\24q\3\2\2\2\26\177\3\2\2\2\30\33\5\4\3\2\31\33\5\6\4\2\32\30\3" +
 					"\2\2\2\32\31\3\2\2\2\33\34\3\2\2\2\34\32\3\2\2\2\34\35\3\2\2\2\35\3\3" +
-					"\2\2\2\36\37\7\3\2\2\37 \7&\2\2 !\7\4\2\2!\"\5\b\5\2\"\5\3\2\2\2#$\5\b" +
-					"\5\2$%\7\5\2\2%&\5\6\4\2&)\3\2\2\2\')\5\24\13\2(#\3\2\2\2(\'\3\2\2\2)" +
-					"\7\3\2\2\2*+\b\5\1\2+,\7\6\2\2,:\5\b\5\13-.\7\7\2\2.:\5\b\5\n/\60\7\b" +
+					"\2\2\2\36\37\7\3\2\2\37 \7\'\2\2 !\7\4\2\2!\"\5\b\5\2\"\5\3\2\2\2#$\5" +
+					"\b\5\2$%\7\5\2\2%&\5\6\4\2&)\3\2\2\2\')\5\24\13\2(#\3\2\2\2(\'\3\2\2\2" +
+					")\7\3\2\2\2*+\b\5\1\2+,\7\6\2\2,:\5\b\5\13-.\7\7\2\2.:\5\b\5\n/\60\7\b" +
 					"\2\2\60:\5\b\5\t\61:\5\n\6\2\62:\5\f\7\2\63:\5\16\b\2\64\65\7\t\2\2\65" +
 					"\66\5\b\5\2\66\67\7\n\2\2\67:\3\2\2\28:\5\20\t\29*\3\2\2\29-\3\2\2\29" +
 					"/\3\2\2\29\61\3\2\2\29\62\3\2\2\29\63\3\2\2\29\64\3\2\2\298\3\2\2\2:@" +
-					"\3\2\2\2;<\f\4\2\2<=\7%\2\2=?\5\b\5\5>;\3\2\2\2?B\3\2\2\2@>\3\2\2\2@A" +
+					"\3\2\2\2;<\f\4\2\2<=\7&\2\2=?\5\b\5\5>;\3\2\2\2?B\3\2\2\2@>\3\2\2\2@A" +
 					"\3\2\2\2A\t\3\2\2\2B@\3\2\2\2CD\7\13\2\2DI\5\b\5\2EF\7\f\2\2FH\5\b\5\2" +
 					"GE\3\2\2\2HK\3\2\2\2IG\3\2\2\2IJ\3\2\2\2JL\3\2\2\2KI\3\2\2\2LM\7\r\2\2" +
 					"M\13\3\2\2\2NO\7\t\2\2OP\5\b\5\2PQ\7\16\2\2QR\5\b\5\2RS\7\17\2\2ST\5\b" +
-					"\5\2TU\7\n\2\2U\r\3\2\2\2VW\7\20\2\2WX\7\'\2\2X\17\3\2\2\2Y\\\5\22\n\2" +
-					"Z\\\7&\2\2[Y\3\2\2\2[Z\3\2\2\2\\\21\3\2\2\2]m\7\'\2\2^m\7\21\2\2_m\7\22" +
+					"\5\2TU\7\n\2\2U\r\3\2\2\2VW\7\20\2\2WX\7(\2\2X\17\3\2\2\2Y\\\5\22\n\2" +
+					"Z\\\7\'\2\2[Y\3\2\2\2[Z\3\2\2\2\\\21\3\2\2\2]m\7(\2\2^m\7\21\2\2_m\7\22" +
 					"\2\2`m\7\23\2\2am\7\24\2\2bm\7\25\2\2cm\7\26\2\2dm\t\2\2\2em\7\33\2\2" +
 					"fm\7\34\2\2gm\7\35\2\2hm\7\36\2\2im\7\37\2\2jm\7 \2\2km\7!\2\2l]\3\2\2" +
 					"\2l^\3\2\2\2l_\3\2\2\2l`\3\2\2\2la\3\2\2\2lb\3\2\2\2lc\3\2\2\2ld\3\2\2" +
 					"\2le\3\2\2\2lf\3\2\2\2lg\3\2\2\2lh\3\2\2\2li\3\2\2\2lj\3\2\2\2lk\3\2\2" +
-					"\2m\23\3\2\2\2nr\7\'\2\2or\7(\2\2pr\5\26\f\2qn\3\2\2\2qo\3\2\2\2qp\3\2" +
+					"\2m\23\3\2\2\2nr\7(\2\2or\7)\2\2pr\5\26\f\2qn\3\2\2\2qo\3\2\2\2qp\3\2" +
 					"\2\2r\25\3\2\2\2s\u0080\7\"\2\2tu\7#\2\2uz\5\24\13\2vw\7\f\2\2wy\5\24" +
 					"\13\2xv\3\2\2\2y|\3\2\2\2zx\3\2\2\2z{\3\2\2\2{}\3\2\2\2|z\3\2\2\2}~\7" +
 					"$\2\2~\u0080\3\2\2\2\177s\3\2\2\2\177t\3\2\2\2\u0080\27\3\2\2\2\r\32\34" +
@@ -79,13 +80,13 @@ public class FPParserParser extends Parser {
 			"'('", "')'", "'['", "','", "']'", "'->'", "';'", "'~'", "'tail'", "'id'",
 			"'eq'", "'eq0'", "'gt'", "'ge'", "'*'", "'/'", "'+'", "'-'", "'a'", "'s'",
 			"'apndl'", "'apndr'", "'distl'", "'distr'", "'iota'", "'<>'", "'<'", "'>'",
-		"'.'"
+			null, "'.'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 			null, null, null, null, null, null, null, null, null, null, null, null,
 			null, null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null, "DOT",
-		"FUN_ID", "NUM", "BOOL", "WS"
+			null, null, null, null, null, null, null, null, null, null, null, "COMMENT",
+			"DOT", "FUN_ID", "NUM", "BOOL", "WS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -646,7 +647,7 @@ public class FPParserParser extends Parser {
 						_errHandler.recoverInline(this);
 					} else {
 						consume();
-					}
+				}
 				}
 				break;
 				case T__24:
@@ -854,17 +855,14 @@ public class FPParserParser extends Parser {
 		public int getRuleIndex() {
 			return RULE_program;
 		}
-
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterProgram(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitProgram(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor) return ((FPParserVisitor<? extends T>) visitor).visitProgram(this);
@@ -889,17 +887,14 @@ public class FPParserParser extends Parser {
 		public int getRuleIndex() {
 			return RULE_definition;
 		}
-
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterDefinition(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitDefinition(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor)
@@ -929,17 +924,14 @@ public class FPParserParser extends Parser {
 		public int getRuleIndex() {
 			return RULE_expression;
 		}
-
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterExpression(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitExpression(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor)
@@ -979,12 +971,10 @@ public class FPParserParser extends Parser {
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterConstructionLabel(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitConstructionLabel(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor)
@@ -1006,12 +996,10 @@ public class FPParserParser extends Parser {
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterInsertLeft(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitInsertLeft(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor)
@@ -1033,12 +1021,10 @@ public class FPParserParser extends Parser {
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterConstantLabel(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitConstantLabel(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor)
@@ -1068,12 +1054,10 @@ public class FPParserParser extends Parser {
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterComposition(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitComposition(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor)
@@ -1095,12 +1079,10 @@ public class FPParserParser extends Parser {
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterApplyAll(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitApplyAll(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor) return ((FPParserVisitor<? extends T>) visitor).visitApplyAll(this);
@@ -1121,12 +1103,10 @@ public class FPParserParser extends Parser {
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterConditionalLabel(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitConditionalLabel(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor)
@@ -1148,12 +1128,10 @@ public class FPParserParser extends Parser {
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterElementary(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitElementary(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor)
@@ -1175,12 +1153,10 @@ public class FPParserParser extends Parser {
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterInsertRight(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitInsertRight(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor)
@@ -1202,12 +1178,10 @@ public class FPParserParser extends Parser {
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterParenths(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitParenths(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor) return ((FPParserVisitor<? extends T>) visitor).visitParenths(this);
@@ -1232,17 +1206,14 @@ public class FPParserParser extends Parser {
 		public int getRuleIndex() {
 			return RULE_construction;
 		}
-
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterConstruction(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitConstruction(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor)
@@ -1268,17 +1239,14 @@ public class FPParserParser extends Parser {
 		public int getRuleIndex() {
 			return RULE_conditional;
 		}
-
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterConditional(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitConditional(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor)
@@ -1300,17 +1268,14 @@ public class FPParserParser extends Parser {
 		public int getRuleIndex() {
 			return RULE_constant;
 		}
-
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterConstant(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitConstant(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor) return ((FPParserVisitor<? extends T>) visitor).visitConstant(this);
@@ -1335,17 +1300,14 @@ public class FPParserParser extends Parser {
 		public int getRuleIndex() {
 			return RULE_function;
 		}
-
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterFunction(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitFunction(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor) return ((FPParserVisitor<? extends T>) visitor).visitFunction(this);
@@ -1363,7 +1325,8 @@ public class FPParserParser extends Parser {
 
 		@Override
 		public int getRuleIndex() {
-			return RULE_built_in_function; }
+			return RULE_built_in_function;
+		}
 
 		public void copyFrom(Built_in_functionContext ctx) {
 			super.copyFrom(ctx);

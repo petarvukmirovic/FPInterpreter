@@ -2,6 +2,7 @@ grammar FPParser;
 
 import FPLexer;
 
+
 program: (definition | expression)+;
 
 definition: 'DEF' FUN_ID '=' functional_form;

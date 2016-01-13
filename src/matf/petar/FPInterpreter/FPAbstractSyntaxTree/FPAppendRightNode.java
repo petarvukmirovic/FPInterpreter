@@ -19,7 +19,7 @@ public class FPAppendRightNode extends FPBuiltinFunctionNode {
             Atom sndArg = argumentsList.get(1);
 
             if (fstArg instanceof FPListAtomNode) {
-                FPListAtomNode fstArgList = (FPListAtomNode) sndArg;
+                FPListAtomNode fstArgList = (FPListAtomNode) fstArg;
 
                 /* constructing new list by prepending first node to
                    second argument.
