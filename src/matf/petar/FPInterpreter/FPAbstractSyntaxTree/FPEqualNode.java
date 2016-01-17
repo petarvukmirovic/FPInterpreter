@@ -7,6 +7,11 @@ public class FPEqualNode extends FPBuiltinFunctionNode {
     private static String errorMsg = "eq argument must be two element list.";
 
     @Override
+    public String toString() {
+        return "eq";
+    }
+
+    @Override
     public Atom evaluate(Atom functionArgument, Map<String, FPFunctionalFormNode> environment) {
         if (functionArgument instanceof FPListAtomNode) {
             FPListAtomNode listAtom = (FPListAtomNode) functionArgument;

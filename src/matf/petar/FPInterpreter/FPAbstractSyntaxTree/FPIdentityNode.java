@@ -7,4 +7,9 @@ public class FPIdentityNode extends FPBuiltinFunctionNode {
     public Atom evaluate(Atom functionArgument, Map<String, FPFunctionalFormNode> environment) {
         return functionArgument;
     }
+
+    @Override
+    public String toString() {
+        return "id";
+    }
 }

@@ -19,4 +19,9 @@ public class FPEqualZeroNode extends FPBuiltinFunctionNode {
             throw new IllegalArgumentException(msg);
         }
     }
+
+    @Override
+    public String toString() {
+        return "eq0";
+    }
 }

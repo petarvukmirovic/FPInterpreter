@@ -41,4 +41,9 @@ public class FPDistributeRightNode extends FPBuiltinFunctionNode {
             throw new IllegalArgumentException(errorMsg);
         }
     }
+
+    @Override
+    public String toString() {
+        return "distr";
+    }
 }

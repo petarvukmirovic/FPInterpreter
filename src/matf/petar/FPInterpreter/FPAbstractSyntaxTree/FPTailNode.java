@@ -5,6 +5,11 @@ import java.util.Map;
 
 public class FPTailNode extends FPBuiltinFunctionNode {
     @Override
+    public String toString() {
+        return "tail";
+    }
+
+    @Override
     public Atom evaluate(Atom functionArgument, Map<String, FPFunctionalFormNode> environment) {
         if (functionArgument instanceof FPListAtomNode) {
             FPListAtomNode arg = (FPListAtomNode) functionArgument;

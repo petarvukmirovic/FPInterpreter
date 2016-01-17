@@ -26,4 +26,9 @@ public class FPIotaNode extends FPFunctionNode {
             throw new IllegalArgumentException(msg);
         }
     }
+
+    @Override
+    public String toString() {
+        return "iota";
+    }
 }

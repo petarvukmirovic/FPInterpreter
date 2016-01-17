@@ -2,10 +2,7 @@ package matf.petar.FPInterpreter.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -41,10 +38,16 @@ public class Controller implements Initializable {
     public Button dugmeOdaberiIzlaznu;
     public TextArea poljeZaIzlaz;
     public RadioButton dugmeUnos;
+    public CheckBox poljeKorakPoKorak;
+    public TextField poljeDatotekaKPK;
+    public Button dugmeOdaberiKPK;
+    public HBox kuijaKPK;
     private Tokovi aktivanUlaz;
     private Tokovi aktivanIzlaz;
     private File odabranaDatoteka;
     private File odabranaIzlaznaDatoteka;
+    // korak po korak datoteka
+    private File odabranaKPKDatoteka;
 
     public void odaberiDatoteku(ActionEvent actionEvent) {
         FileChooser birac = new FileChooser();
@@ -195,6 +198,29 @@ public class Controller implements Initializable {
 
             String rezultat;
             if (program != null) {
+                OutputStreamWriter izlaz = null;
+                if (poljeKorakPoKorak.isSelected()) {
+                    if (odabranaKPKDatoteka == null) {
+                        ErrorMessages.Greska("Morate odabrati datoteku za ispis izvestaja"
+                                + " 'korak-po-korak'.");
+                    } else {
+                        try {
+                            izlaz = new OutputStreamWriter(
+                                    new FileOutputStream(odabranaKPKDatoteka));
+
+                            program.run(izlaz);
+                            try {
+                                izlaz.flush();
+                                izlaz.close();
+                            } catch (IOException e) {
+                                ErrorMessages.Greska(e.getMessage());
+                            }
+                        } catch (FileNotFoundException e) {
+                            ErrorMessages.Greska("Datoteka " + odabranaKPKDatoteka + " nije nadjena");
+                        }
+                    }
+                }
+
                 rezultat = program.run();
             } else {
                 rezultat = "";
@@ -248,6 +274,23 @@ public class Controller implements Initializable {
             }
         }
         return tekstPrograma;
+    }
+
+    public void odaberiKPK(ActionEvent actionEvent) {
+        FileChooser birac = new FileChooser();
+        if (odabranaKPKDatoteka != null) {
+            birac.setInitialDirectory(odabranaKPKDatoteka.getParentFile());
+        }
+        birac.setTitle("Odaberite datoteku za izlaz programa");
+        odabranaKPKDatoteka = birac.showSaveDialog(null);
+
+        if (odabranaKPKDatoteka != null) {
+            poljeDatotekaKPK.setText(odabranaIzlaznaDatoteka.getAbsolutePath());
+        }
+    }
+
+    public void kpkAktivirano(ActionEvent actionEvent) {
+        kuijaKPK.setVisible(poljeKorakPoKorak.isSelected());
     }
 
     public enum Tokovi {

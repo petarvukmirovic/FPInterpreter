@@ -1,5 +1,6 @@
 package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
+import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,7 +8,7 @@ public class FPProgramNode extends FPTreeNode {
     private Map<String, FPFunctionalFormNode> _programEnvironment
             = new HashMap<>();
 
-    public String run() {
+    public String run(OutputStreamWriter out) {
         StringBuilder builder = new StringBuilder();
         try {
             for (FPTreeNode command : this.getChildren()) {
@@ -15,11 +16,14 @@ public class FPProgramNode extends FPTreeNode {
                     _programEnvironment =
                             ((FPFunctionDefinitionNode) command)
                                     .registerFunction(_programEnvironment);
+                    HelperMethods.appendIfFileOpen(out, command.toString());
                 } else {
                     // command is expression evaluation
                     FPExpressionNode expression = (FPExpressionNode) command;
                     builder.append(expression.evaluateExpression(_programEnvironment)
                             + "\n");
+
+                    expression.printStepByStep(getProgramEnvironment(), out, "");
                 }
             }
         } catch (Exception e) {
@@ -27,6 +31,10 @@ public class FPProgramNode extends FPTreeNode {
         } finally {
             return builder.toString();
         }
+    }
+
+    public String run() {
+        return this.run(null);
     }
 
     public Map<String, FPFunctionalFormNode> getProgramEnvironment() {

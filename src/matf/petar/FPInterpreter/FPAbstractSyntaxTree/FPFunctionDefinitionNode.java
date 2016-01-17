@@ -20,13 +20,22 @@ public class FPFunctionDefinitionNode extends FPTreeNode {
             Map<String, FPFunctionalFormNode> newEnvironment =
                     new HashMap<>(environment);
 
-            newEnvironment.put(getFunctionName(),
-                    (FPFunctionalFormNode) this.getChildren().get(0));
+            newEnvironment.put(getFunctionName(), getFFToDefine());
 
             return newEnvironment;
         } else {
             String errorMsg = "function " + _functionName + " already defined";
             throw new IllegalArgumentException(errorMsg);
         }
+    }
+
+    private FPFunctionalFormNode getFFToDefine() {
+        return (FPFunctionalFormNode) this.getChildren().get(0);
+    }
+
+    @Override
+    public String toString() {
+        return "Defining " + getFunctionName() + " to be "
+                + getFFToDefine();
     }
 }

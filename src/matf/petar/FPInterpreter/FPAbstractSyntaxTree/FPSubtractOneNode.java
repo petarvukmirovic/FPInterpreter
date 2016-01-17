@@ -21,4 +21,9 @@ public class FPSubtractOneNode extends FPBuiltinFunctionNode {
         }
 
     }
+
+    @Override
+    public String toString() {
+        return "s";
+    }
 }

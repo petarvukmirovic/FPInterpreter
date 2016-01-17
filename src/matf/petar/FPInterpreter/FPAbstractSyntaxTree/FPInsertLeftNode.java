@@ -11,8 +11,7 @@ public class FPInsertLeftNode extends FPFunctionalFormNode {
 
     @Override
     public Atom applyFunctionalForm(Atom arg, Map<String, FPFunctionalFormNode> environment) {
-        FPFunctionalFormNode ffToApply =
-                (FPFunctionalFormNode) this.getChildren().get(0);
+        FPFunctionalFormNode ffToApply = getFFToApply();
 
         if (arg instanceof FPListAtomNode) {
             FPListAtomNode listArg = (FPListAtomNode) arg;
@@ -53,5 +52,14 @@ public class FPInsertLeftNode extends FPFunctionalFormNode {
         } else {
             throw new IllegalArgumentException(errorMsg);
         }
+    }
+
+    private FPFunctionalFormNode getFFToApply() {
+        return (FPFunctionalFormNode) this.getChildren().get(0);
+    }
+
+    @Override
+    public String toString() {
+        return "INSERT-LEFT " + getFFToApply();
     }
 }

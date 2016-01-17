@@ -25,4 +25,9 @@ public class FPApplyAllNode extends FPFunctionalFormNode {
 
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "APPLY-ALL " + this.getChildren().get(0).toString();
+    }
 }

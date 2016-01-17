@@ -5,7 +5,17 @@ import java.util.Map;
 
 public class FPGreaterThanNode extends FPBuiltinFunctionNode {
     private static String errorMsg =
-            "eq argument must be  a two integer list.";
+            "gt argument must be  a two integer list.";
+
+    @Override
+    public Atom applyFunctionalForm(Atom arg, Map<String, FPFunctionalFormNode> environment) {
+        return super.applyFunctionalForm(arg, environment);
+    }
+
+    @Override
+    public String toString() {
+        return "gt";
+    }
 
     @Override
     public Atom evaluate(Atom functionArgument, Map<String, FPFunctionalFormNode> environment) {

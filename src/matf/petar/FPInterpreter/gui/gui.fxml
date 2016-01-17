@@ -88,6 +88,22 @@
               style="-fx-font-family: monospace; -fx-font-size:14px">
     </TextArea>
 
+    <HBox alignment="CENTER_LEFT">
+        <padding>
+            <Insets top="20"/>
+        </padding>
+        <CheckBox fx:id="poljeKorakPoKorak" selected="false" onAction="#kpkAktivirano">
+            <padding>
+                <Insets right="10"/>
+            </padding>
+            Ispisi 'korak po korak' izvestaj
+        </CheckBox>
+        <HBox fx:id="kuijaKPK" alignment="CENTER_LEFT" visible="false">
+            <TextField fx:id="poljeDatotekaKPK" disable="true"/>
+            <Button fx:id="dugmeOdaberiKPK" onAction="#odaberiKPK">Odaberite datoteku</Button>
+        </HBox>
+    </HBox>
+
     <HBox alignment="CENTER">
         <padding>
             <Insets top="20"/>

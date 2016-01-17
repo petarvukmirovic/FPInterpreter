@@ -33,4 +33,8 @@ public class FPSelectorNode extends FPBuiltinFunctionNode {
         }
     }
 
+    @Override
+    public String toString() {
+        return "" + getIndex();
+    }
 }

@@ -8,7 +8,12 @@ import java.util.Map;
  */
 public class FPGreaterThanOrEqualNode extends FPBuiltinFunctionNode {
     private static String errorMsg =
-            "eq argument must be  a two integer list.";
+            "ge argument must be  a two integer list.";
+
+    @Override
+    public String toString() {
+        return "ge";
+    }
 
     @Override
     public Atom evaluate(Atom functionArgument, Map<String, FPFunctionalFormNode> environment) {

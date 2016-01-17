@@ -1,5 +1,7 @@
 package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -42,5 +44,11 @@ public class FPBoolAtomNode extends FPExpressionNode implements Atom {
     @Override
     public Atom evaluateExpression(Map<String, FPFunctionalFormNode> environment) {
         return this;
+    }
+
+    @Override
+    public void printStepByStep(Map<String, FPFunctionalFormNode> environment, OutputStreamWriter out, String resultSoFar) throws IOException {
+        String apply = HelperMethods.getApplyForState(resultSoFar);
+        HelperMethods.appendIfFileOpen(out, resultSoFar + apply + this.toString());
     }
 }

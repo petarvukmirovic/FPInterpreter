@@ -16,4 +16,25 @@ public class FPConstructionNode extends FPFunctionalFormNode {
 
         return resultList;
     }
+
+    @Override
+    public String toString() {
+        /* Children list is not being changed,
+           so we can safely run parallelStream.
+
+           (I have never tried it, this is my
+            shot :)
+         */
+        String commaSeparatedFF =
+                this.getChildren().parallelStream()
+                        .limit(this.getChildren().size() - 1)
+                        .map(ff -> ff.toString() + ", ")
+                        .reduce("", (a, b) -> a + b);
+
+        String last = this.getChildren()
+                .get(this.getChildren().size() - 1)
+                .toString();
+
+        return "[" + commaSeparatedFF + last + "]";
+    }
 }

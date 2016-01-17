@@ -8,9 +8,13 @@ public class FPInsertRightNode extends FPFunctionalFormNode {
                     + "functional form expects a list atom";
 
     @Override
+    public String toString() {
+        return "INSERT-RIGHT " + getFFToApply();
+    }
+
+    @Override
     public Atom applyFunctionalForm(Atom arg, Map<String, FPFunctionalFormNode> environment) {
-        FPFunctionalFormNode ffToApply =
-                (FPFunctionalFormNode) this.getChildren().get(0);
+        FPFunctionalFormNode ffToApply = getFFToApply();
 
         if (arg instanceof FPListAtomNode) {
             FPListAtomNode listArg = (FPListAtomNode) arg;
@@ -42,5 +46,9 @@ public class FPInsertRightNode extends FPFunctionalFormNode {
         } else {
             throw new IllegalArgumentException(errorMsg);
         }
+    }
+
+    private FPFunctionalFormNode getFFToApply() {
+        return (FPFunctionalFormNode) this.getChildren().get(0);
     }
 }

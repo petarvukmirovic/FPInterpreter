@@ -15,4 +15,9 @@ public class FPBinaryToUnaryNode extends FPFunctionalFormNode {
 
     }
 
+    @Override
+    public String toString() {
+        return "BU " + this.getChildren().get(0) + " "
+                + this.getChildren().get(1);
+    }
 }

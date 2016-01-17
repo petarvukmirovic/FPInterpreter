@@ -10,6 +10,11 @@ public class FPDistributeLeftNode extends FPBuiltinFunctionNode {
                     + "<A,B> where A is an atom and B is a list";
 
     @Override
+    public String toString() {
+        return "distl";
+    }
+
+    @Override
     public Atom evaluate(Atom functionArgument, Map<String, FPFunctionalFormNode> environment) {
         if (functionArgument instanceof FPListAtomNode) {
             FPListAtomNode listArg = (FPListAtomNode) functionArgument;

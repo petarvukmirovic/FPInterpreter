@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 public class FPAppendLeftNode extends FPBuiltinFunctionNode {
+
     private static String errorMsg =
-            "appndl argument must be a list of the type <A, B> where A "
+            "apndl argument must be a list of the type <A, B> where A "
                     + " is an atom an B is a list";
 
     @Override
@@ -39,5 +40,10 @@ public class FPAppendLeftNode extends FPBuiltinFunctionNode {
         }
 
         return listResult;
+    }
+
+    @Override
+    public String toString() {
+        return "apndl";
     }
 }

@@ -1,5 +1,7 @@
 package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.Map;
 
 public class FPFunctionNameNode extends FPFunctionNode {
@@ -25,4 +27,19 @@ public class FPFunctionNameNode extends FPFunctionNode {
         }
     }
 
+    @Override
+    public void printStepByStep(Atom arg, Map<String, FPFunctionalFormNode> environment,
+                                String resultSoFar, OutputStreamWriter out) throws IOException {
+        String apply = HelperMethods.getApplyForState(resultSoFar);
+        HelperMethods.appendIfFileOpen(out, resultSoFar + apply + toString() + arg);
+
+        FPFunctionalFormNode definedFF = environment.get(this.getFunctionName());
+        definedFF.printStepByStep(arg, environment, resultSoFar, out);
+    }
+
+
+    @Override
+    public String toString() {
+        return getFunctionName();
+    }
 }

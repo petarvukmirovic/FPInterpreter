@@ -50,4 +50,9 @@ public class FPArithmeticNode extends FPFunctionNode {
             throw new IllegalArgumentException(errorMsg);
         }
     }
+
+    @Override
+    public String toString() {
+        return "" + _operation;
+    }
 }

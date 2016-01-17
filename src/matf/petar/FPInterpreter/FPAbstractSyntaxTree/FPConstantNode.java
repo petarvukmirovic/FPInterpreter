@@ -9,6 +9,15 @@ public class FPConstantNode extends FPFunctionalFormNode {
         /* return num value, no matter what argument
            is passed.
          */
+        return getIntConstant();
+    }
+
+    private FPIntAtomNode getIntConstant() {
         return (FPIntAtomNode) this.getChildren().get(0);
+    }
+
+    @Override
+    public String toString() {
+        return "~" + getIntConstant();
     }
 }

@@ -4,11 +4,14 @@ import java.util.Map;
 
 public class FPWhileNode extends FPFunctionalFormNode {
     @Override
+    public String toString() {
+        return "WHILE " + getPredicate() + " " + getFF();
+    }
+
+    @Override
     public Atom applyFunctionalForm(Atom arg, Map<String, FPFunctionalFormNode> environment) {
-        FPFunctionalFormNode predicate =
-                (FPFunctionalFormNode) this.getChildren().get(0);
-        FPFunctionalFormNode function =
-                (FPFunctionalFormNode) this.getChildren().get(1);
+        FPFunctionalFormNode predicate = getPredicate();
+        FPFunctionalFormNode function = getFF();
 
         Atom predResAtom = predicate.applyFunctionalForm(arg, environment);
 
@@ -26,5 +29,13 @@ public class FPWhileNode extends FPFunctionalFormNode {
         } else {
             throw new IllegalArgumentException("predicate result must be a bool atom");
         }
+    }
+
+    private FPFunctionalFormNode getFF() {
+        return (FPFunctionalFormNode) this.getChildren().get(1);
+    }
+
+    private FPFunctionalFormNode getPredicate() {
+        return (FPFunctionalFormNode) this.getChildren().get(0);
     }
 }

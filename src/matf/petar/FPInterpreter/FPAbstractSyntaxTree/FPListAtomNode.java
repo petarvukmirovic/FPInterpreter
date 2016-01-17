@@ -1,5 +1,7 @@
 package matf.petar.FPInterpreter.FPAbstractSyntaxTree;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -88,6 +90,12 @@ public class FPListAtomNode extends FPExpressionNode implements Atom {
             String msg = operation + " arguments must be lists of the same size";
             throw new IllegalArgumentException(msg);
         }
+    }
+
+    @Override
+    public void printStepByStep(Map<String, FPFunctionalFormNode> environment, OutputStreamWriter out, String resultSoFar) throws IOException {
+        String apply = HelperMethods.getApplyForState(resultSoFar);
+        out.write(resultSoFar + apply + this.toString());
     }
 
     @Override
