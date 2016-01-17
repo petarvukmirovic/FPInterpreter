@@ -14,7 +14,14 @@ public class FPSubtractOneNode extends FPBuiltinFunctionNode {
                 extractedArgument instanceof FPIntAtomNode) {
             FPIntAtomNode intAtom = (FPIntAtomNode) extractedArgument;
 
-            return new FPIntAtomNode(intAtom.evaluate() - 1);
+            if (functionArgument instanceof FPIntAtomNode) {
+                return new FPIntAtomNode(intAtom.evaluate() - 1);
+            } else {
+                FPListAtomNode singletonList = new FPListAtomNode();
+                singletonList.addChild(new FPIntAtomNode(intAtom.evaluate() - 1));
+
+                return singletonList;
+            }
         } else {
             String msg = "s argument must be a singleton int list or int atom";
             throw new IllegalArgumentException(msg);

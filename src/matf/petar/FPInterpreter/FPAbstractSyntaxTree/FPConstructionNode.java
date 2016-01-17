@@ -27,14 +27,13 @@ public class FPConstructionNode extends FPFunctionalFormNode {
          */
         String commaSeparatedFF =
                 this.getChildren().parallelStream()
-                        .limit(this.getChildren().size() - 1)
-                        .map(ff -> ff.toString() + ", ")
+                        .skip(1)
+                        .map(ff -> ", " + ff.toString())
                         .reduce("", (a, b) -> a + b);
 
-        String last = this.getChildren()
-                .get(this.getChildren().size() - 1)
+        String first = this.getChildren().get(0)
                 .toString();
 
-        return "[" + commaSeparatedFF + last + "]";
+        return "[" + first + commaSeparatedFF + "]";
     }
 }

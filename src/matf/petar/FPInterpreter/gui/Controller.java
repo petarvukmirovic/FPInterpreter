@@ -196,7 +196,7 @@ public class Controller implements Initializable {
 
             FPProgramNode program = (FPProgramNode) trv.visitProgram(fpp.program());
 
-            String rezultat;
+            String rezultat = "";
             if (program != null) {
                 OutputStreamWriter izlaz = null;
                 if (poljeKorakPoKorak.isSelected()) {
@@ -208,7 +208,7 @@ public class Controller implements Initializable {
                             izlaz = new OutputStreamWriter(
                                     new FileOutputStream(odabranaKPKDatoteka));
 
-                            program.run(izlaz);
+                            rezultat = program.run(izlaz);
                             try {
                                 izlaz.flush();
                                 izlaz.close();
@@ -219,9 +219,9 @@ public class Controller implements Initializable {
                             ErrorMessages.Greska("Datoteka " + odabranaKPKDatoteka + " nije nadjena");
                         }
                     }
+                } else {
+                    rezultat = program.run();
                 }
-
-                rezultat = program.run();
             } else {
                 rezultat = "";
             }
@@ -285,7 +285,7 @@ public class Controller implements Initializable {
         odabranaKPKDatoteka = birac.showSaveDialog(null);
 
         if (odabranaKPKDatoteka != null) {
-            poljeDatotekaKPK.setText(odabranaIzlaznaDatoteka.getAbsolutePath());
+            poljeDatotekaKPK.setText(odabranaKPKDatoteka.getAbsolutePath());
         }
     }
 

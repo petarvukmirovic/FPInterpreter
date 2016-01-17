@@ -8,12 +8,21 @@ public class FPAddOneNode extends FPBuiltinFunctionNode {
 
     @Override
     public Atom evaluate(Atom functionArgument, Map<String, FPFunctionalFormNode> environment) {
-        Atom extractedAtom = HelperMethods.extractArgument(functionArgument);
+        Atom extractedArgument = HelperMethods.extractArgument(functionArgument);
+        if (extractedArgument != null &&
+                extractedArgument instanceof FPIntAtomNode) {
+            FPIntAtomNode intAtom = (FPIntAtomNode) extractedArgument;
 
-        if (extractedAtom != null &&
-                extractedAtom instanceof FPIntAtomNode) {
-            return new FPIntAtomNode((int) extractedAtom.evaluate() + 1);
+            if (functionArgument instanceof FPIntAtomNode) {
+                return new FPIntAtomNode(intAtom.evaluate() + 1);
+            } else {
+                FPListAtomNode singletonList = new FPListAtomNode();
+                singletonList.addChild(new FPIntAtomNode(intAtom.evaluate() + 1));
+
+                return singletonList;
+            }
         } else {
+
             throw new IllegalArgumentException(errorMsg);
         }
     }
