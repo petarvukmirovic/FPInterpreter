@@ -1,4 +1,4 @@
-// Generated from /home/petar/IdeaProjects/FPInterpreter/src/grammar/FPLexer.g4 by ANTLR 4.5.1
+// Generated from C:/Users/Petar Vukmirovic/IdeaProjects/FPInterpreter/src/grammar\FPLexer.g4 by ANTLR 4.5.1
 package matf.petar.FPInterpreter.gen;
 
 import org.antlr.v4.runtime.*;

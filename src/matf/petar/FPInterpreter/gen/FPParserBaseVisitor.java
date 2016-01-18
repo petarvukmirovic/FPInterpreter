@@ -1,4 +1,4 @@
-// Generated from /home/petar/IdeaProjects/FPInterpreter/src/grammar/FPParser.g4 by ANTLR 4.5.1
+// Generated from C:/Users/Petar Vukmirovic/IdeaProjects/FPInterpreter/src/grammar\FPParser.g4 by ANTLR 4.5.1
 package matf.petar.FPInterpreter.gen;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -91,10 +91,9 @@ public class FPParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> implemen
 	public T visitWhile(FPParserParser.WhileContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -109,16 +108,16 @@ public class FPParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> implemen
 	public T visitParenths(FPParserParser.ParenthsContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override
 	public T visitBinaryToUnary(FPParserParser.BinaryToUnaryContext ctx) {
-		return visitChildren(ctx); }
+		return visitChildren(ctx);
+	}
 	/**
 	 * {@inheritDoc}
 	 *

@@ -1,4 +1,4 @@
-// Generated from /home/petar/IdeaProjects/FPInterpreter/src/grammar/FPParser.g4 by ANTLR 4.5.1
+// Generated from C:/Users/Petar Vukmirovic/IdeaProjects/FPInterpreter/src/grammar\FPParser.g4 by ANTLR 4.5.1
 package matf.petar.FPInterpreter.gen;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -127,15 +127,12 @@ public interface FPParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void enterWhile(FPParserParser.WhileContext ctx);
-
 	/**
 	 * Exit a parse tree produced by the {@code while}
 	 * labeled alternative in {@link FPParserParser#functional_form}.
-	 *
 	 * @param ctx the parse tree
 	 */
 	void exitWhile(FPParserParser.WhileContext ctx);
-
 	/**
 	 * Enter a parse tree produced by the {@code insertRight}
 	 * labeled alternative in {@link FPParserParser#functional_form}.
@@ -160,19 +157,15 @@ public interface FPParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitParenths(FPParserParser.ParenthsContext ctx);
-
 	/**
 	 * Enter a parse tree produced by the {@code binaryToUnary}
 	 * labeled alternative in {@link FPParserParser#functional_form}.
-	 *
 	 * @param ctx the parse tree
 	 */
 	void enterBinaryToUnary(FPParserParser.BinaryToUnaryContext ctx);
-
 	/**
 	 * Exit a parse tree produced by the {@code binaryToUnary}
 	 * labeled alternative in {@link FPParserParser#functional_form}.
-	 *
 	 * @param ctx the parse tree
 	 */
 	void exitBinaryToUnary(FPParserParser.BinaryToUnaryContext ctx);

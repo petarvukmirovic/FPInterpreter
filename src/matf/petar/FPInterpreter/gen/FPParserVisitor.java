@@ -1,4 +1,4 @@
-// Generated from /home/petar/IdeaProjects/FPInterpreter/src/grammar/FPParser.g4 by ANTLR 4.5.1
+// Generated from C:/Users/Petar Vukmirovic/IdeaProjects/FPInterpreter/src/grammar\FPParser.g4 by ANTLR 4.5.1
 package matf.petar.FPInterpreter.gen;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -84,7 +84,6 @@ public interface FPParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitWhile(FPParserParser.WhileContext ctx);
-
 	/**
 	 * Visit a parse tree produced by the {@code insertRight}
 	 * labeled alternative in {@link FPParserParser#functional_form}.
@@ -99,11 +98,9 @@ public interface FPParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitParenths(FPParserParser.ParenthsContext ctx);
-
 	/**
 	 * Visit a parse tree produced by the {@code binaryToUnary}
 	 * labeled alternative in {@link FPParserParser#functional_form}.
-	 *
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */

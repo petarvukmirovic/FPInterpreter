@@ -1,4 +1,4 @@
-// Generated from /home/petar/IdeaProjects/FPInterpreter/src/grammar/FPParser.g4 by ANTLR 4.5.1
+// Generated from C:/Users/Petar Vukmirovic/IdeaProjects/FPInterpreter/src/grammar\FPParser.g4 by ANTLR 4.5.1
 package matf.petar.FPInterpreter.gen;
 
 import org.antlr.v4.runtime.*;
@@ -1187,12 +1187,10 @@ public class FPParserParser extends Parser {
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterWhile(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitWhile(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor) return ((FPParserVisitor<? extends T>) visitor).visitWhile(this);
@@ -1266,12 +1264,10 @@ public class FPParserParser extends Parser {
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).enterBinaryToUnary(this);
 		}
-
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof FPParserListener) ((FPParserListener) listener).exitBinaryToUnary(this);
 		}
-
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof FPParserVisitor)

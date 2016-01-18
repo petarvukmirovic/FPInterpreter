@@ -10,10 +10,10 @@ public abstract class FPFunctionalFormNode extends FPTreeNode {
                                 String resultSoFar, OutputStreamWriter out) throws IOException {
         String apply = HelperMethods.getApplyForState(resultSoFar);
 
-        HelperMethods.appendIfFileOpen(out, resultSoFar + this.toString() + apply + arg);
+        HelperMethods.appendIfFileOpen(out, resultSoFar + this.toString() + ":" + arg);
 
         Atom result = this.applyFunctionalForm(arg, environment);
 
-        HelperMethods.appendIfFileOpen(out, resultSoFar + apply + arg);
+        HelperMethods.appendIfFileOpen(out, resultSoFar + apply + result);
     }
 }

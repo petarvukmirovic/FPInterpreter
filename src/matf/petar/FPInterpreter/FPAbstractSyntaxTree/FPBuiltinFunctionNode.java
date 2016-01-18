@@ -14,7 +14,7 @@ public abstract class FPBuiltinFunctionNode extends FPFunctionNode {
         String apply = HelperMethods.getApplyForState(resultSoFar);
 
         HelperMethods.appendIfFileOpen(out, resultSoFar + " " + this.toString()
-                + apply + arg + "\n");
+                + apply + arg);
 
         Atom result = this.evaluate(arg, environment);
 

@@ -1,4 +1,4 @@
-// Generated from /home/petar/IdeaProjects/FPInterpreter/src/grammar/FPParser.g4 by ANTLR 4.5.1
+// Generated from C:/Users/Petar Vukmirovic/IdeaProjects/FPInterpreter/src/grammar\FPParser.g4 by ANTLR 4.5.1
 package matf.petar.FPInterpreter.gen;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -139,19 +139,17 @@ public class FPParserBaseListener implements FPParserListener {
 	@Override
 	public void enterWhile(FPParserParser.WhileContext ctx) {
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override
 	public void exitWhile(FPParserParser.WhileContext ctx) {
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void enterInsertRight(FPParserParser.InsertRightContext ctx) { }
@@ -175,23 +173,22 @@ public class FPParserBaseListener implements FPParserListener {
 	@Override
 	public void exitParenths(FPParserParser.ParenthsContext ctx) {
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override
 	public void enterBinaryToUnary(FPParserParser.BinaryToUnaryContext ctx) {
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override
-	public void exitBinaryToUnary(FPParserParser.BinaryToUnaryContext ctx) { }
+	public void exitBinaryToUnary(FPParserParser.BinaryToUnaryContext ctx) {
+	}
 	/**
 	 * {@inheritDoc}
 	 *

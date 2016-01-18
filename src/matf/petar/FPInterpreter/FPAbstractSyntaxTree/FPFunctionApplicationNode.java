@@ -26,7 +26,7 @@ public class FPFunctionApplicationNode extends FPExpressionNode  {
         FPFunctionalFormNode ffToApply = getFFToApply();
 
         expressionArgument.printStepByStep(environment, out,
-                resultSoFar + ffToApply.toString() + ":");
+                resultSoFar + apply + ffToApply.toString());
 
         Atom expressionResult = expressionArgument.evaluateExpression(environment);
 

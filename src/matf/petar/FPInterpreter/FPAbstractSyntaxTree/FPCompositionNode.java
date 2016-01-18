@@ -27,13 +27,10 @@ public class FPCompositionNode extends FPFunctionalFormNode {
     public void printStepByStep(Atom arg, Map<String, FPFunctionalFormNode> environment,
                                 String resultSoFar, OutputStreamWriter out) throws IOException {
         String apply = HelperMethods.getApplyForState(resultSoFar);
-        HelperMethods.appendIfFileOpen(out, resultSoFar + this.toString() + ":" + arg + "\n");
+        HelperMethods.appendIfFileOpen(out, resultSoFar + this.toString() + ":" + arg);
 
         Atom rightResult = this.getRightFF().applyFunctionalForm(arg, environment);
-        HelperMethods.appendIfFileOpen(out, resultSoFar + this.getLeftFF() + ":" + rightResult + "\n");
-
-        Atom compositionResult = this.getLeftFF().applyFunctionalForm(rightResult, environment);
-        HelperMethods.appendIfFileOpen(out, resultSoFar + apply + compositionResult + "\n");
+        this.getLeftFF().printStepByStep(rightResult, environment, resultSoFar, out);
     }
 
     @Override

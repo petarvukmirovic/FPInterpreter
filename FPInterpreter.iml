@@ -21,5 +21,6 @@
       </library>
     </orderEntry>
     <orderEntry type="inheritedJdk" />
+    <orderEntry type="library" name="org.antlr:antlr4-runtime:4.5.1" level="project" />
   </component>
 </module>
