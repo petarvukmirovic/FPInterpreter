@@ -52,6 +52,6 @@ public class HelperMethods {
      * is needed
      */
     public static String getApplyForState(String resultSoFar) {
-        return "".equals(resultSoFar.trim()) ? "" : ":";
+        return "".equals(resultSoFar) ? "" : " : ";
     }
 }
